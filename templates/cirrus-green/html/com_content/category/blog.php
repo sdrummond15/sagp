@@ -100,14 +100,14 @@ $cparams = JComponentHelper::getParams('com_media');
 <?php endif; ?>
 
 
-	<?php if (is_array($this->children[$this->category->id]) && count($this->children[$this->category->id]) > 0 && $this->params->get('maxLevel') != 0) : ?>
-		<div class="cat-children">
-		<h3>
-<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
-</h3>
-			<?php echo $this->loadTemplate('children'); ?>
-		</div>
-	<?php endif; ?>
+<!--	--><?php //if (is_array($this->children[$this->category->id]) && count($this->children[$this->category->id]) > 0 && $this->params->get('maxLevel') != 0) : ?>
+<!--		<div class="cat-children">-->
+<!--		<h3>-->
+<!--			--><?php //echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
+<!--		</h3>-->
+<!--			--><?php //echo $this->loadTemplate('children'); ?>
+<!--		</div>-->
+<!--	--><?php //endif; ?>
 
 <?php if (($this->params->def('show_pagination', 1) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
 		<div class="pagination">

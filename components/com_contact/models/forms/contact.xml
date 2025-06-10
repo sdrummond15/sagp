@@ -9,6 +9,7 @@
 		/>
 
 		<field
+			hint="Nome"
 			name="contact_name"
 			type="text"
 			label="COM_CONTACT_CONTACT_EMAIL_NAME_LABEL"
@@ -20,6 +21,7 @@
 		/>
 
 		<field
+			hint="Email"
 			name="contact_email"
 			type="email"
 			label="COM_CONTACT_EMAIL_LABEL"
@@ -33,6 +35,7 @@
 		/>
 
 		<field
+			hint="Assunto"
 			name="contact_subject"
 			type="text"
 			label="COM_CONTACT_CONTACT_MESSAGE_SUBJECT_LABEL"
@@ -45,6 +48,7 @@
 		/>
 
 		<field
+			hint="Mensagem"
 			name="contact_message"
 			type="textarea"
 			label="COM_CONTACT_CONTACT_ENTER_MESSAGE_LABEL"

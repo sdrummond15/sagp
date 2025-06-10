@@ -17,24 +17,52 @@ if (isset($this->error)) : ?>
 	</div>
 <?php endif; ?>
 
+<script src="../templates/cirrus-green/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+/* Máscaras TELEFONE */
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function mtel(v){
+    v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+    return v;
+}
+function id( el ){
+    return document.getElementById( el );
+}
+/*TELEFONE 1*/
+window.onload = function(){
+    id('jform_phone').onkeyup = function(){
+        mascara( this, mtel );
+    }
+}
+</script>
+
 <div class="contact-form">
 	<form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-validate form-horizontal">
-		<fieldset>
-			<legend><?php echo JText::_('COM_CONTACT_FORM_LABEL'); ?></legend>
+                <fieldset>
 			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('contact_name'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('contact_name'); ?></div>
 			</div>
 			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('contact_email'); ?></div>
 				<div class="controls"><?php echo $this->form->getInput('contact_email'); ?></div>
 			</div>
-			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('contact_subject'); ?></div>
-				<div class="controls"><?php echo $this->form->getInput('contact_subject'); ?></div>
+                        <div class="control-group">
+				<div class="controls"><?php echo $this->form->getInput('phone'); ?></div>
 			</div>
 			<div class="control-group">
-				<div class="control-label"><?php echo $this->form->getLabel('contact_message'); ?></div>
+				<div class="controls"><?php echo $this->form->getInput('contact_subject'); ?></div>
+			</div>
+                </fieldset>
+                <fieldset>
+			<div class="control-group">
 				<div class="controls"><?php echo $this->form->getInput('contact_message'); ?></div>
 			</div>
 				<?php 	if ($this->params->get('show_email_copy')){ ?>

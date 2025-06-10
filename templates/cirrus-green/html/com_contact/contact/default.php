@@ -11,32 +11,11 @@ defined('_JEXEC') or die;
 
 $cparams = JComponentHelper::getParams('com_media');
 ?>
+<div class="titulo-contato"><h2>Entre em Contato Conosco</h2></div>
 <div class="contact<?php echo $this->pageclass_sfx?>">
-<?php if ($this->params->get('show_page_heading')) : ?>
-<h1>
-	<?php echo $this->escape($this->params->get('page_heading')); ?>
-</h1>
-<?php endif; ?>
-	<?php if ($this->contact->name && $this->params->get('show_name')) : ?>
-		<div class="page-header">
-			<h2>
-				<span class="contact-name"><?php echo $this->contact->name; ?></span>
-			</h2>
-		</div>
-	<?php endif;  ?>
-	<?php if ($this->params->get('show_contact_category') == 'show_no_link') : ?>
-		<h3>
-			<span class="contact-category"><?php echo $this->contact->category_title; ?></span>
-		</h3>
-	<?php endif; ?>
-	<?php if ($this->params->get('show_contact_category') == 'show_with_link') : ?>
-		<?php $contactLink = ContactHelperRoute::getCategoryRoute($this->contact->catid);?>
-		<h3>
-			<span class="contact-category"><a href="<?php echo $contactLink; ?>">
-				<?php echo $this->escape($this->contact->category_title); ?></a>
-			</span>
-		</h3>
-	<?php endif; ?>
+
+	
+	
 	<?php if ($this->params->get('show_contact_list') && count($this->contacts) > 1) : ?>
 		<form action="#" method="get" name="selectForm" id="selectForm">
 			<?php echo JText::_('COM_CONTACT_SELECT_CONTACT'); ?>
@@ -52,17 +31,11 @@ $cparams = JComponentHelper::getParams('com_media');
 	<?php  if ($this->params->get('presentation_style') == 'sliders'):?>
 		<div class="accordion" id="accordionContact">
 			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="accordionContact" href="#basic-details">
-					<?php echo JText::_('COM_CONTACT_DETAILS');?>
-					</a>
-				</div>
+				
 				<div id="basic-details" class="accordion-body collapse in">
 					<div class="accordion-inner">
 	<?php endif; ?>
-	<?php if ($this->params->get('presentation_style') == 'plain'):?>
-		<?php  echo '<h3>' . JText::_('COM_CONTACT_DETAILS') . '</h3>';  ?>
-	<?php endif; ?>
+	
 	<?php if ($this->contact->image && $this->params->get('show_image')) : ?>
 		<div class="thumbnail pull-right">
 			<?php echo JHtml::_('image', $this->contact->image, JText::_('COM_CONTACT_IMAGE_DETAILS'), array('align' => 'middle')); ?>
@@ -94,11 +67,7 @@ $cparams = JComponentHelper::getParams('com_media');
 
 		<?php if ($this->params->get('presentation_style') == 'sliders'):?>
 			<div class="accordion-group">
-				<div class="accordion-heading">
-					<a class="accordion-toggle" data-toggle="collapse" data-parent="accordionContact" href="#display-form">
-					<?php echo JText::_('COM_CONTACT_EMAIL_FORM');?>
-					</a>
-				</div>
+				
 				<div id="display-form" class="accordion-body collapse">
 					<div class="accordion-inner">
 		<?php endif; ?>
