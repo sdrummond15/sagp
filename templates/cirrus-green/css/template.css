@@ -510,6 +510,10 @@ article a:hover {
     padding-left: 2px;
 }
 
+#logo img {
+    width:auto;
+}
+
 #topnav_wrap {
     width: 100%;
     display: table;
@@ -2690,9 +2694,13 @@ ul.category-module-servicos li a p {
         width: 96%;
     }
 
+    #logo img {
+        height:100px;
+    }
+
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
     .cameraContent .camera_caption_title {
         font-size: 24px;
     }
@@ -2794,6 +2802,10 @@ ul.category-module-servicos li a p {
     .custom-banner-int h1 {
         font-size: 30px;
     }
+
+    #logo img {
+        height:90px;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -2814,7 +2826,7 @@ ul.category-module-servicos li a p {
     }
 
     #logo a img {
-        width: 140px;
+
     }
 
     
@@ -2866,8 +2878,24 @@ ul.category-module-servicos li a p {
         margin-bottom: 40px;
     }
 
+}
 
+@media screen and (max-width: 490px) {
+    #header_wrap{
+        height: 100px;
+    }
+    #topmenu_wrap{
+        width:100px;
+    }
+    
+    #logo img{
+        width:200px;
+        height:auto;
+    }
 
+    #modbutton a.btn::after{
+        content: fa fa-sign-in;
+    }
 }
 
 .menuresp li.active span.separator,

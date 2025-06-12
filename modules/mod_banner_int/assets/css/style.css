@@ -52,7 +52,7 @@
         bottom: 0;
     }
     #banner-int1 .banner-int1 .banner1{
-        height: 200px;
+        height: 470px;
     }
 }
 
@@ -63,7 +63,7 @@
         margin: 0 auto 5px auto;
     }
     #banner-int1 .banner-int1 .banner1{
-        height: 180px;
+        height: 450px;
     }
 }
 
@@ -72,7 +72,7 @@
         font-size: 28px;
     }
     #banner-int1 .banner-int1 .banner1{
-        height: 150px;
+        height: 400px;
     }
 }
 
@@ -81,6 +81,6 @@
         font-size: 24px;
     }
     #banner-int1 .banner-int1 .banner1{
-        height: 120px;
+        height: 320px;
     }
 }
