@@ -34,6 +34,24 @@
 
 }
 
+@font-face {
+    font-family: 'Heavitas';
+    src: url('../css/fontes/heavitas.woff2') format('woff2'),
+         url('../css/fontes/heavitas.woff') format('woff'),
+         url('../css/fontes/heavitas.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cordia New';
+    src: url('../css/fontes/cordia-new.woff2') format('woff2'),
+    url('../css/fontes/cordia-new.woff') format('woff'),
+    url('../css/fontes/cordia-new.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html,
 body,
 div,
@@ -198,13 +216,14 @@ body {
 }
 
 a {
-    color: #000;
+    color: #010530;
     text-decoration: none;
-    font-weight: bold;
+    font-family: 'Heavitas';
+    font-weight: lighter;
 }
 
 a:hover {
-    color: #6fe3f2;
+    color: #727272;
     transition: linear 100ms;
 }
 
@@ -223,14 +242,17 @@ b {
 }
 
 p {
+    font-family: 'Cordia New';
+    font-size: 1.75rem;
     line-height: 1.2em;
     margin: 8px 0;
 }
 
 h1 {
-    font-family: Arial;
+    font-family: 'Heavitas';
+    font-weight: lighter;
     color: #000;
-    font-size: 0px;
+    font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 20px;
 }
@@ -247,14 +269,14 @@ h1 a:hover {
 }
 
 h2 {
-    font-family: Arial;
+    font-size: 2rem;
+    font-family: 'Heavitas';
+    font-weight: lighter;
     color: #000000;
-    font-size: 24px;
     line-height: 1.2;
     margin-bottom: 25px;
     text-transform: uppercase;
-    font-weight: bold;
-    border-bottom: 1px solid #383838; 
+    border-bottom: 1px solid #383838;
 }
 
 h2 a {
@@ -269,12 +291,12 @@ h2 a:hover {
 }
 
 h3 {
-    font-family: Arial;
+    font-family: 'Heavitas';
+    font-weight: lighter;
     color: #000;
-    font-size: 24px;
+    font-size: 1.75rem; 
     line-height: 1.2;
     margin-bottom: 20px;
-    font-weight: bold;
 }
 
 h3 a {
@@ -299,24 +321,25 @@ h3 a:hover {
 }
 
 h4 {
-    font-family: Arial;
+    font-family: 'Heavitas';
     color: #000;
-    font-size: 15px;
+    font-size: 1.5rem; 
     margin: 10px 0;
-    font-weight: bold;
-}
+    font-weight: lighter;}
 
 h5 {
-    font-family: Arial;
+    font-family: 'Heavitas';
     color: #000;
-    font-size: 18px;
+    font-size: 1.25rem; 
     margin: 10px 0;
+    font-weight: lighter;
 }
 
 h6 {
-    font-family: Arial;
+    font-family: 'Heavitas';
     color: #000;
-    font-size: 16px;
+    font-size: 1rem;
+    font-weight: lighter;
 }
 
 hr {
@@ -326,6 +349,15 @@ hr {
     height: 1px;
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #999;
+    font-family: "Cordia New";
+    font-size: 1.75rem;
+    font-weight: bold;
+    opacity: 1;
 }
 
 article a {
@@ -378,7 +410,7 @@ article a:hover {
 .btn {
     float: right;
     width: auto;
-    background-color: #6fe3f2;
+    background-color: #232323;
     padding: 5px 15px;
     color: #ffffff;
     font-family: Arial;
@@ -391,7 +423,7 @@ article a:hover {
     cursor: pointer;
     border-radius: 5px;
     margin-bottom: 15px;
-    float: left;
+    border: 1px solid #727272;
 }
 
 #login-form input.button:hover,
@@ -405,10 +437,10 @@ article a:hover {
 #mailto-window button:hover,
 .btn:hover {
     transition: linear 100ms;
-    color: #fff;
+    color: #FFF;
     text-decoration: none;
-    background-color: #000000;
-    transition: linear 100ms;
+    background-color: #010530;
+    transition: linear 300ms;
 }
 
 .readmore a {
@@ -471,8 +503,8 @@ article a:hover {
     position: fixed;
     z-index: 8;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.67);
-    border-bottom: 1px solid #6fe3f2;
+    background-color: #23232375;
+    border-bottom: 1px solid #14395F;
 }
 
 #header {
@@ -492,7 +524,7 @@ article a:hover {
     display: table;
     line-height: 0;
     padding: 10px 15px;
-    border: 1px solid #6fe3f2;
+    border: 1px solid #14395F;
     border-top: 0;
     border-radius: 0 0 10px 10px;
 }
@@ -511,7 +543,7 @@ article a:hover {
 }
 
 #logo img {
-    width:auto;
+    width: auto;
 }
 
 #topnav_wrap {
@@ -549,27 +581,26 @@ article a:hover {
 
 #topmenu span,
 #topmenu a {
-    font-family: Arial;
+    font-family: 'Heavitas';
     font-size: 16px;
     display: block;
     color: #FFF;
     text-decoration: none;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: lighter;
 }
 
 #topmenu span:hover,
 #topmenu a:hover {
-    color: #6fe3f2;
+    color: #010530;
     transition: linear 100ms;
 }
 
 #topmenu li.active a,
 #topmenu li.active a:hover {
     text-decoration: none;
-    font-family: Arial;
     border: 0;
-    color: #6fe3f2;
+    color: #225F80;
     transition: linear 100ms;
 }
 
@@ -626,7 +657,7 @@ article a:hover {
     color: #fff;
     text-decoration: none;
     transition: linear 100ms;
-    
+
 }
 
 #topmenu li.active ul a {
@@ -802,7 +833,7 @@ article a:hover {
     padding-top: 45px;
     overflow: hidden;
     margin-bottom: 30px;
-    
+
 }
 
 #content-w1 h3,
@@ -1843,7 +1874,7 @@ a.feed-link {
 #bottom_wrap {
     width: 100%;
     display: table;
-    background-color: #6fe3f2;
+    background-color: #35485C;
     border: 0;
 }
 
@@ -1851,8 +1882,7 @@ a.feed-link {
     clear: both;
     width: 100%;
     display: table;
-    background-color: #6fe3f2;
-
+    background-color: #35485C;
 }
 
 .copyrightint {
@@ -1862,7 +1892,6 @@ a.feed-link {
     color: #FFF;
     font-family: Arial;
     font-size: 14px;
-    color: #000;
     font-weight: bold;
 }
 
@@ -1902,7 +1931,7 @@ a.sd {
 }
 
 #box2 {
-    width: 50%;
+    width: 80%;
     margin: 0;
     padding: 0;
     float: left;
@@ -1918,11 +1947,15 @@ a.sd {
 
 #box2 p {
     color: #000;
-    margin: 0;
     font-family: Arial;
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
+    float: right;
+}
+
+#box2 img {
+    float: left;
 }
 
 #box2 h4 {
@@ -2378,8 +2411,6 @@ ul.category-module-servicos li a p {
 .titulo-contato h2 {
     line-height: 1.2;
     color: #000;
-    font-family: Arial;
-    font-weight: bold;
     font-size: 24px;
     margin: 0 0 30px 0;
     text-align: left;
@@ -2403,7 +2434,7 @@ ul.category-module-servicos li a p {
     font-family: Arial;
     font-size: 18px;
     border-radius: 5px;
-    border: 1px solid #6fe3f2;
+    border: 1px solid #14395F;
 }
 
 .contact-form textarea {
@@ -2417,7 +2448,7 @@ ul.category-module-servicos li a p {
     /* display: table; */
     height: 128px;
     border-radius: 5px;
-    border: 1px solid #6fe3f2;
+    border: 1px solid #14395F;
 }
 
 .contact-form .form-actions button {
@@ -2695,7 +2726,7 @@ ul.category-module-servicos li a p {
     }
 
     #logo img {
-        height:100px;
+        height: 100px;
     }
 
 }
@@ -2804,7 +2835,7 @@ ul.category-module-servicos li a p {
     }
 
     #logo img {
-        height:90px;
+        height: 90px;
     }
 }
 
@@ -2825,11 +2856,9 @@ ul.category-module-servicos li a p {
         padding: 8px 0;
     }
 
-    #logo a img {
+    #logo a img {}
 
-    }
 
-    
 
     #topmenu_wrap .midias {
         width: 30px;
@@ -2881,20 +2910,27 @@ ul.category-module-servicos li a p {
 }
 
 @media screen and (max-width: 490px) {
-    #header_wrap{
+    #header_wrap {
         height: 100px;
     }
-    #topmenu_wrap{
-        width:100px;
+
+
+
+    #logo img {
+        width: 200px;
+        height: auto;
     }
-    
-    #logo img{
-        width:200px;
-        height:auto;
+}
+
+@media screen and (max-width: 328px) {
+
+    ul.contact-social {
+        margin-right: -20px;
+        margin-bottom: -10px;
     }
 
-    #modbutton a.btn::after{
-        content: fa fa-sign-in;
+    #topmenu_wrap {
+        width: 10px;
     }
 }
 
@@ -2905,8 +2941,6 @@ ul.category-module-servicos li a p {
     color: #6fe3f2;
     font-weight: bold;
 }
-
-
 
 .menuresp span.separator,
 
@@ -2944,7 +2978,13 @@ ul.category-module-servicos li a p {
 
 
 
-.menuresp ul ul {list-style: none;padding: 0;margin: 0;background-color: transparent;display: none;}
+.menuresp ul ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    display: none;
+}
 
 
 
@@ -2973,5 +3013,3 @@ ul.category-module-servicos li a p {
     color: #6fe3f2;
 
 }
-
-

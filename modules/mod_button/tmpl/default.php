@@ -1,30 +1,42 @@
 <?php
 
-$link = ($params->get('type_link') == 'menu_item') ? JRoute::_('index.php?Itemid=' . $params->get('menu')) : $params->get('external_url');
+// Prevenção de repetição de chamadas
+$typeLink     = $params->get('type_link');
+$menuItem     = $params->get('menu');
+$externalUrl  = $params->get('external_url');
+$classButton  = $params->get('class_button');
+$titleParam   = $params->get('title');
+$typeImage    = $params->get('type_image');
+$icon         = $params->get('icon');
+$imageParam   = $params->get('image');
+$headerClass  = $params->get('header_class');
 
-$class = (!empty($params->get('class_button'))) ? 'btn-' . $params->get('class_button') : '';
+// Monta o link
+$link = ($typeLink === 'menu_item') 
+    ? JRoute::_('index.php?Itemid=' . (int) $menuItem) 
+    : $externalUrl;
 
-$title = (!empty($params->get('title'))) ? '<span>' . $params->get('title') . '</span>' : '';
+// Classe do botão
+$class = !empty($classButton) ? 'btn-' . htmlspecialchars($classButton) : '';
 
+// Título
+$titleText = !empty($titleParam) ? strip_tags($titleParam) : '';
+$title = $titleText !== '' ? '<span>' . htmlspecialchars($titleText) . '</span>' : '';
+
+// Imagem ou ícone
 $image = '';
-
-if ($params->get('type_image') == 'icon' && !empty(trim($params->get('icon')))) {
-
-    $image = '<i class="' . $params->get('icon') . '"></i>';
-
-} elseif ($params->get('type_image') == 'image' && !empty(trim($params->get('image')))) {
-
-    $image = '<img src="' . $params->get('image') . '" alt="' . $title . '" />';
-
+if ($typeImage === 'icon' && !empty(trim((string) $icon))) {
+    $image = '<i class="' . htmlspecialchars($icon) . '"></i>';
+} elseif ($typeImage === 'image' && !empty(trim((string) $imageParam))) {
+    $imageSrc = htmlspecialchars($imageParam, ENT_QUOTES, 'UTF-8');
+    $image = '<img src="' . $imageSrc . '" alt="' . htmlspecialchars($titleText) . '" />';
 }
-
-
 
 ?>
 
-<div id="modbutton" class="<?= $params->get('header_class') ?>">
+<div id="modbutton" class="<?= htmlspecialchars($headerClass) ?>">
 
-    <a href="<?= $link ?>" class="btn <?= $class ?>">
+    <a href="<?= htmlspecialchars($link) ?>" class="btn <?= $class ?>">
 
         <?= $image ?> <?= $title ?>
 

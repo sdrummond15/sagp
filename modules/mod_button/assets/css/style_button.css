@@ -4,23 +4,21 @@
 }
 
 .btn.btn-login {
-    background-color: #6fe3f2;
-    border: 1px solid #FFF;
+    background-color: #232323;
+    border: 1px solid #727272;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 600;
     padding: 10px 15px;
     line-height: 0;
-    margin: 10px 0 0 0;
-    margin-top: -10px;
-    margin-right: 0px;
+    margin: -4px 0 0 0;
 }
 
 .btn.btn-login:hover {
-    color: #3B0511;
-    background-color: #FFF;
-    border-color: #6fe3f2;
-    transition: 200ms;
+    color: #FFF;
+    background-color: #010530;
+    border-color: #FFF;
+    transition: linear 300ms;
 }
 
 @media screen and (max-width:1200px) {
