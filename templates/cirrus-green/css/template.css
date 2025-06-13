@@ -37,8 +37,8 @@
 @font-face {
     font-family: 'Heavitas';
     src: url('../css/fontes/heavitas.woff2') format('woff2'),
-         url('../css/fontes/heavitas.woff') format('woff'),
-         url('../css/fontes/heavitas.ttf') format('truetype');
+        url('../css/fontes/heavitas.woff') format('woff'),
+        url('../css/fontes/heavitas.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -46,8 +46,8 @@
 @font-face {
     font-family: 'Cordia New';
     src: url('../css/fontes/cordia-new.woff2') format('woff2'),
-    url('../css/fontes/cordia-new.woff') format('woff'),
-    url('../css/fontes/cordia-new.ttf') format('truetype');
+        url('../css/fontes/cordia-new.woff') format('woff'),
+        url('../css/fontes/cordia-new.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -294,7 +294,7 @@ h3 {
     font-family: 'Heavitas';
     font-weight: lighter;
     color: #000;
-    font-size: 1.75rem; 
+    font-size: 1.75rem;
     line-height: 1.2;
     margin-bottom: 20px;
 }
@@ -323,14 +323,15 @@ h3 a:hover {
 h4 {
     font-family: 'Heavitas';
     color: #000;
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
     margin: 10px 0;
-    font-weight: lighter;}
+    font-weight: lighter;
+}
 
 h5 {
     font-family: 'Heavitas';
     color: #000;
-    font-size: 1.25rem; 
+    font-size: 1.25rem;
     margin: 10px 0;
     font-weight: lighter;
 }
@@ -1890,8 +1891,8 @@ a.feed-link {
     margin: auto;
     padding: 10px 0;
     color: #FFF;
-    font-family: Arial;
-    font-size: 14px;
+    font-family: "Cordia New";
+    font-size: 1.625rem;
     font-weight: bold;
 }
 
@@ -1931,7 +1932,7 @@ a.sd {
 }
 
 #box2 {
-    width: 80%;
+    width: 90%;
     margin: 0;
     padding: 0;
     float: left;
@@ -1943,15 +1944,6 @@ a.sd {
     padding: 0;
     float: left;
     text-align: right;
-}
-
-#box2 p {
-    color: #000;
-    font-family: Arial;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
-    float: right;
 }
 
 #box2 img {
@@ -2713,6 +2705,13 @@ ul.category-module-servicos li a p {
     display: none !important;
 }
 
+.customendereco-rodape p {
+    margin-top: 80px;
+    margin-left: 80px;
+    float: right;
+    font-size: 16px;
+}
+
 @media screen and (max-width: 1200px) {
 
     #header,
@@ -2769,12 +2768,23 @@ ul.category-module-servicos li a p {
         font-size: 18px;
     }
 
-    #box1 {
-        width: 30%;
+    #box_placeholder {
+        padding: 0px 0 20px 0;
     }
 
     #box2 {
-        width: 70%;
+        width: 100%;
+    }
+
+    #box2 img {
+        float: right;
+        width: 150px
+    }
+
+    .customendereco-rodape p {
+        font-size: 1rem;
+        margin-top: 70px;
+        margin-left: 40px;
     }
 
     .custom-logo>div {
@@ -2793,6 +2803,10 @@ ul.category-module-servicos li a p {
 
     .item-page-noticias-cases img {
         max-width: 100%;
+    }
+
+    .copyrightint {
+        font-size: 1.375rem
     }
 }
 
@@ -2817,10 +2831,22 @@ ul.category-module-servicos li a p {
 
     #box2 {
         width: auto;
-        min-width: 450px;
+        min-width: 600px;
         min-height: 100px;
+        padding-top: 20px;
         float: none;
         display: table;
+    }
+
+
+    #box2 img {
+        width: 100px;
+    }
+
+    .customendereco-rodape p {
+        margin-top: 40px;
+        margin-left: 30px;
+        font-size: 0.825rem;
     }
 
     #box3 {
@@ -2856,10 +2882,6 @@ ul.category-module-servicos li a p {
         padding: 8px 0;
     }
 
-    #logo a img {}
-
-
-
     #topmenu_wrap .midias {
         width: 30px;
         height: 30px;
@@ -2870,15 +2892,26 @@ ul.category-module-servicos li a p {
     }
 
     #box_placeholder {
-        width: 96%;
-    }
+        width: 100%;
+    }   
 
     #box2 {
-        min-width: 0;
+        min-width: auto;
+        width:100%;
+    }
+
+    #box2 img {
+        width: 80px;
+    }
+
+    .customendereco-rodape p {
+        margin-top: 30px;
+        margin-left: 30px;
+        font-size: 0.65rem;
     }
 
     .copyrightint {
-        font-size: 10px;
+        font-size: 1rem
     }
 
     .custom-banner-int h1 {
@@ -2914,6 +2947,22 @@ ul.category-module-servicos li a p {
         height: 100px;
     }
 
+    #box2{
+        width:92%;
+        min-height: 0;
+    }
+
+    #box2 img {
+        width: 50px;
+        float:right;
+    }
+
+    .customendereco-rodape p {
+        margin-left: 10px;
+        margin-top: 15px;
+        font-size: 0.575rem;
+        max-width: 230px;
+    }
 
 
     #logo img {
@@ -2927,6 +2976,15 @@ ul.category-module-servicos li a p {
     ul.contact-social {
         margin-right: -20px;
         margin-bottom: -10px;
+    }
+
+    #box2 img {
+        width:40px;
+    }
+
+    .customendereco-rodape p {
+        font-size: 0.5rem;
+        max-width: 200px;
     }
 
     #topmenu_wrap {
