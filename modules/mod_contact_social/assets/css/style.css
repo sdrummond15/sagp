@@ -1,0 +1,122 @@
+#contact-social {
+    margin-top: 25px;
+    float: right;
+    margin-right: 20px;
+}
+
+ul.contact-social {
+    list-style: none;
+    display: table;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+ul.contact-social.social-right {
+    display: inline-flex;
+    float: right;
+    text-align: right;
+}
+
+ul.contact-social li.small {
+    display: none;
+}
+
+ul.contact-social li {
+    display: inline-block;
+    padding: 0 2px;
+    vertical-align: top;
+    margin: 0 3px;
+}
+
+ul.contact-social li:last-child {
+    border: 0;
+}
+
+ul.contact-social li a {
+    color: #fff;
+    font-weight: normal;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+ul.contact-social li a:hover {
+    color: #010530;
+    transition: linear 100ms;
+}
+
+ul.contact-social li a.phone span {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+ul.contact-social li a b {
+    font-weight: normal;
+}
+
+ul.contact-social li a i {
+    font-size: 28px;
+}
+
+ul.contact-social li a span {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.moduletable-sociais #contact-social {
+    float: right;
+}
+
+.moduletable-sociais ul.contact-social {
+    margin: auto;
+}
+
+.moduletable-sociais ul.contact-social li a {
+    color: #000;
+}
+
+.moduletable-sociais ul.contact-social li a:hover {
+    color: #016fa4;
+}
+
+#contact-social .certificado {
+    float: left;
+    margin-right: 40px;
+}
+
+@media screen and (max-width: 768px) {
+    ul.contact-social li a b {
+        display: none;
+    }
+    
+    ul.contact-social li.phone {
+        display: none;
+    }
+
+    ul.contact-social li.small {
+        display: inline-block;
+    }
+
+    #contact-social {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    ul.contact-social {
+        margin-right: 5px;
+    }
+
+    ul.contact-social li.phone {
+        display: none;
+    }
+
+    ul.contact-social li.small{
+        display: inline-block;
+    }
+
+    #contact-social {
+        margin-top: 15px;
+    }
+}
