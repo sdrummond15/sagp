@@ -272,7 +272,7 @@ h2 {
     font-size: 2rem;
     font-family: 'Heavitas';
     font-weight: lighter;
-    color: #000000;
+    color: #010530;
     line-height: 1.2;
     margin-bottom: 25px;
     text-transform: uppercase;
@@ -2713,8 +2713,11 @@ ul.category-module-servicos li a p {
     font-size: 16px;
 }
 
+.customendereco-rodape a {
+    color: #FFF;
+}
 .customendereco-rodape a:hover {
-    color:#010530;
+    color: #010530;
 }
 
 @media screen and (max-width: 1200px) {
