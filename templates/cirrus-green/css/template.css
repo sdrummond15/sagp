@@ -36,9 +36,9 @@
 
 @font-face {
     font-family: 'Heavitas';
-    src: url('../fontes/Heavitas.woff2') format('woff2'),
-        url('../fontes/Heavitas.woff') format('woff'),
-        url('../fontes/Heavitas.ttf') format('truetype');
+    src: url('../fontes/heavitas.woff2') format('woff2'),
+        url('../fontes/heavitas.woff') format('woff'),
+        url('../fontes/heavitas.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
