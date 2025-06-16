@@ -36,9 +36,9 @@
 
 @font-face {
     font-family: 'Heavitas';
-    src: url('/templates/cirrus-green/css/fontes/heavitas.woff2') format('woff2'),
-        url('/templates/cirrus-green/css/fontes/heavitas.woff') format('woff'),
-        url('/templates/cirrus-green/css/fontes/heavitas.ttf') format('truetype');
+    src: url('/templates/cirrus-green/css/fontes/Heavitas.woff2') format('woff2'),
+        url('/templates/cirrus-green/css/fontes/Heavitas.woff') format('woff'),
+        url('/templates/cirrus-green/css/fontes/Heavitas.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
