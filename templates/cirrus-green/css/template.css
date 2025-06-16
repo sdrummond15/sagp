@@ -36,15 +36,15 @@
 
 @font-face {
     font-family: 'Heavitas';
-    src: url('fontes/heavitas.woff2') format('woff2'),
-        url('fontes/heavitas.woff') format('woff'),
-        url('fontes/heavitas.ttf') format('truetype');
+    src: url('/templates/cirrus-green/css/fontes/heavitas.woff2') format('woff2'),
+        url('/templates/cirrus-green/css/fontes/heavitas.woff') format('woff'),
+        url('/templates/cirrus-green/css/fontes/heavitas.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Cordia New';
+    font-family: 'Cordia-New';
     src: url('fontes/cordia-new.woff2') format('woff2'),
         url('fontes/cordia-new.woff') format('woff'),
         url('fontes/cordia-new.ttf') format('truetype');
@@ -242,7 +242,7 @@ b {
 }
 
 p {
-    font-family: 'Cordia New';
+    font-family: 'Cordia-New';
     font-size: 1.75rem;
     line-height: 1.2em;
     margin: 8px 0;
@@ -355,7 +355,7 @@ hr {
 input::placeholder,
 textarea::placeholder {
     color: #999;
-    font-family: "Cordia New";
+    font-family: "Cordia-New";
     font-size: 1.75rem;
     font-weight: bold;
     opacity: 1;
@@ -1891,7 +1891,7 @@ a.feed-link {
     margin: auto;
     padding: 10px 0;
     color: #FFF;
-    font-family: "Cordia New";
+    font-family: "Cordia-New";
     font-size: 1.625rem;
     font-weight: bold;
 }
