@@ -294,7 +294,7 @@ h3 {
     font-family: 'Heavitas';
     font-weight: lighter;
     color: #000;
-    font-size: 1.75rem;
+    font-size: 1.4rem;
     line-height: 1.2;
     margin-bottom: 20px;
 }
@@ -323,7 +323,7 @@ h3 a:hover {
 h4 {
     font-family: 'Heavitas';
     color: #000;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     margin: 10px 0;
     font-weight: lighter;
 }
@@ -2403,7 +2403,7 @@ ul.category-module-servicos li a p {
 
 .titulo-contato h2 {
     line-height: 1.2;
-    color: #000;
+    color: #010530;
     font-size: 24px;
     margin: 0 0 30px 0;
     text-align: left;
