@@ -36,9 +36,9 @@
 
 @font-face {
     font-family: 'Heavitas';
-    src: url('/templates/cirrus-green/css/fontes/Heavitas.woff2') format('woff2'),
-        url('/templates/cirrus-green/css/fontes/Heavitas.woff') format('woff'),
-        url('/templates/cirrus-green/css/fontes/Heavitas.ttf') format('truetype');
+    src: url('../fontes/heavitas.woff2') format('woff2'),
+        url('../fontes/heavitas.woff') format('woff'),
+        url('../fontes/heavitas.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -2711,6 +2711,10 @@ ul.category-module-servicos li a p {
     margin-left: 80px;
     float: right;
     font-size: 16px;
+}
+
+.customendereco-rodape a:hover {
+    color:#010530;
 }
 
 @media screen and (max-width: 1200px) {
