@@ -36,18 +36,18 @@
 
 @font-face {
     font-family: 'Heavitas';
-    src: url('../css/fontes/heavitas.woff2') format('woff2'),
-        url('../css/fontes/heavitas.woff') format('woff'),
-        url('../css/fontes/heavitas.ttf') format('truetype');
+    src: url('fontes/heavitas.woff2') format('woff2'),
+        url('fontes/heavitas.woff') format('woff'),
+        url('fontes/heavitas.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Cordia New';
-    src: url('../css/fontes/cordia-new.woff2') format('woff2'),
-        url('../css/fontes/cordia-new.woff') format('woff'),
-        url('../css/fontes/cordia-new.ttf') format('truetype');
+    src: url('fontes/cordia-new.woff2') format('woff2'),
+        url('fontes/cordia-new.woff') format('woff'),
+        url('fontes/cordia-new.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -2929,7 +2929,6 @@ ul.category-module-servicos li a p {
     h3,
     h4 {
         font-size: 15px;
-        
     }
 
     .contact-form fieldset {
