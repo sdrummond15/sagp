@@ -44,8 +44,13 @@ if ($menu->getActive() == $menu->getDefault($lang->getTag())) {
     <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/template.css" type="text/css" />
     <link rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/font-awesome.min.css" type="text/css" />
     <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon-light.ico" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon-dark.ico" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="images/favicon/favicon-dark.ico">
+    <link rel="manifest" href="images/favicon/site.webmanifest">
+    <link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
+
     <script type="text/javascript" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/js/sfhover.js"></script>
     <script type="text/javascript" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/js/jquery-1.11.3.js"></script>
     <script>
