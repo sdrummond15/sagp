@@ -2716,8 +2716,17 @@ ul.category-module-servicos li a p {
 .customendereco-rodape a {
     color: #FFF;
 }
+
 .customendereco-rodape a:hover {
     color: #010530;
+}
+
+.btn-contato {
+    float: none;
+}
+
+.btn-casos-sucesso{
+    float: none;
 }
 
 @media screen and (max-width: 1200px) {
@@ -2901,11 +2910,11 @@ ul.category-module-servicos li a p {
 
     #box_placeholder {
         width: 100%;
-    }   
+    }
 
     #box2 {
         min-width: auto;
-        width:100%;
+        width: 100%;
     }
 
     #box2 img {
@@ -2955,14 +2964,14 @@ ul.category-module-servicos li a p {
         height: 100px;
     }
 
-    #box2{
-        width:92%;
+    #box2 {
+        width: 92%;
         min-height: 0;
     }
 
     #box2 img {
         width: 50px;
-        float:right;
+        float: right;
     }
 
     .customendereco-rodape p {
@@ -2987,7 +2996,7 @@ ul.category-module-servicos li a p {
     }
 
     #box2 img {
-        width:40px;
+        width: 40px;
     }
 
     .customendereco-rodape p {
