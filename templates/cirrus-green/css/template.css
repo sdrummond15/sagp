@@ -362,12 +362,13 @@ textarea::placeholder {
 }
 
 article a {
-    color: #000;
+    color: #727272;
+    font-family: "Cordia-New";
     font-weight: bold;
 }
 
 article a:hover {
-    color: #6fe3f2;
+    color: #232323;
     text-decoration: none;
     transition: linear 100ms;
 }
@@ -437,15 +438,21 @@ article a:hover {
 #contact-form button.validate:hover,
 #mailto-window button:hover,
 .btn:hover {
-    transition: linear 100ms;
+    transition: linear 150ms;
     color: #FFF;
     text-decoration: none;
-    background-color: #010530;
-    transition: linear 300ms;
+    background-color: #727272;
+    border-color: #EEE;
 }
 
 .readmore a {
     font-weight: 700;
+    font-size: 15px;
+    float: right;
+}
+
+.readmore a:hover {
+    color: #232323;
 }
 
 #midias {
@@ -593,7 +600,12 @@ article a:hover {
 
 #topmenu span:hover,
 #topmenu a:hover {
-    color: #010530;
+    color: #232323;
+    text-shadow:
+        0 0 2px #727272,
+        0 0 2px #727272,
+        0 0 2px #727272,
+        0 0 2px #727272;
     transition: linear 100ms;
 }
 
@@ -601,7 +613,7 @@ article a:hover {
 #topmenu li.active a:hover {
     text-decoration: none;
     border: 0;
-    color: #225F80;
+    color: #BBBBBB;
     transition: linear 100ms;
 }
 
@@ -2718,16 +2730,110 @@ ul.category-module-servicos li a p {
 }
 
 .customendereco-rodape a:hover {
-    color: #010530;
+    color: #BBBBBB;
 }
 
 .btn-contato {
     float: none;
 }
 
-.btn-casos-sucesso{
+.btn-casos-sucesso {
     float: none;
 }
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+
+}
+
+.service-box {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.service-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 300px;
+    overflow: hidden;
+}
+
+.service-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.service-content {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-title {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+    color: #333333;
+    line-height: 1.2;
+}
+
+.service-description {
+    flex: 1;
+    font-size: 1rem;
+    color: #666666;
+    margin: 0 0 1rem 0;
+    line-height: 1.4;
+}
+
+.service-link {
+    align-self: flex-start;
+    font-size: 1.275rem;
+    font-weight: 500;
+    color: #0066cc;
+    text-decoration: none;
+    border: 1px solid #0066cc;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.service-link:hover {
+    background-color: #0066cc;
+    color: #ffffff;
+}
+
+.secao-leia-mais-home {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+
+}
+
+.secao-leia-mais-home img {
+    margin-right: 40px;
+}
+
+.secao-leia-mais-home>div {
+    margin: auto 0;
+}
+
 
 @media screen and (max-width: 1200px) {
 
@@ -2899,6 +3005,10 @@ ul.category-module-servicos li a p {
         padding: 8px 0;
     }
 
+    .btn {
+        font-size: 12px;
+    }
+
     #topmenu_wrap .midias {
         width: 30px;
         height: 30px;
@@ -2969,6 +3079,10 @@ ul.category-module-servicos li a p {
         min-height: 0;
     }
 
+    .menuresp ul {
+        margin-top: 18px;
+    }
+
     #box2 img {
         width: 50px;
         float: right;
@@ -2988,6 +3102,12 @@ ul.category-module-servicos li a p {
     }
 }
 
+@media screen and (max-width: 390px) {
+    .menuresp ul {
+        margin-top: 1px;
+    }
+}
+
 @media screen and (max-width: 328px) {
 
     ul.contact-social {
@@ -2999,6 +3119,10 @@ ul.category-module-servicos li a p {
         width: 40px;
     }
 
+    .menuresp ul {
+        margin-top: 1px;
+    }
+
     .customendereco-rodape p {
         font-size: 0.5rem;
         max-width: 200px;
@@ -3007,13 +3131,18 @@ ul.category-module-servicos li a p {
     #topmenu_wrap {
         width: 10px;
     }
+
+    .secao-leia-mais-home img {
+        height: auto;
+        width: 100px;
+    }
 }
 
 .menuresp li.active span.separator,
 
 .menuresp li.active a {
 
-    color: #6fe3f2;
+    color: #BBBBBB;
     font-weight: bold;
 }
 
@@ -3047,7 +3176,7 @@ ul.category-module-servicos li a p {
 
     text-decoration: none;
     font-weight: bold;
-    color: #6fe3f2;
+    color: #232323;
 
 }
 
@@ -3077,7 +3206,7 @@ ul.category-module-servicos li a p {
 
 .menuresp ul li.active ul li a:hover {
     font-weight: bold;
-    color: #6fe3f2;
+    color: #232323;
 
 }
 
@@ -3085,6 +3214,6 @@ ul.category-module-servicos li a p {
 
 .menuresp ul li.active ul li.active a {
     font-weight: bold;
-    color: #6fe3f2;
+    color: #565859;
 
 }

@@ -4,8 +4,8 @@
 }
 
 .btn.btn-login {
-    background-color: #232323;
-    border: 1px solid #727272;
+    background-color: #727272;
+    border: 1px solid #FFF;
     font-size: 16px;
     text-transform: uppercase;
     font-weight: 600;
@@ -16,8 +16,8 @@
 
 .btn.btn-login:hover {
     color: #FFF;
-    background-color: #010530;
-    border-color: #FFF;
+    border-color: #727272;
+    background-color: #232323;
     transition: linear 300ms;
 }
 
