@@ -3298,3 +3298,7 @@ ul.category-module-servicos li a p {
     color: #000;
 
 }
+
+a.close {
+    cursor: pointer;
+}
