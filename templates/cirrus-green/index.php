@@ -6,6 +6,8 @@
  * @license        GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die('Restricted access');
+
+JHtml::_('bootstrap.framework');
 $LeftMenuOn = ($this->countModules('position-4') or $this->countModules('position-7'));
 $RightMenuOn = ($this->countModules('position-6') or $this->countModules('position-3'));
 $TopNavOn = ($this->countModules('position-13'));
@@ -253,6 +255,9 @@ if ($menu->getActive() == $menu->getDefault($lang->getTag())) {
                 <img src="images/sd.png" alt="Sdrummond Tecnologia" title="Sdrummond Tecnologia" />
             </a>
         </div>
+    </div>
+    <div id="whatsapp">
+        <jdoc:include type="modules" name="whatsapp" style="none" />
     </div>
     </div>
     </div>

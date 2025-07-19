@@ -9,7 +9,7 @@
 	<author>Cedric Keiflin</author>
 	<authorEmail>ced1870@gmail.com</authorEmail>
 	<authorUrl>https://www.joomlack.fr</authorUrl>
-	<version>2.7.0</version>
+	<version>2.6.0</version>
 	<description>SLIDESHOWCK_DESC</description>
 	<install>
 		<sql>

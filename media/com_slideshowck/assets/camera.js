@@ -3,8 +3,6 @@
 // Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
 // Updated by Cédric KEIFLIN - https://www.joomlack.fr - https://www.ceikay.com
 
-// v1.4.27	- 07/03/25 : add breakpoints feature
-// v1.4.26	- 05/03/25 : fix issue with google source and mobile resolution
 // v1.4.25	- 21/10/24 : add alias option for direct slide link feature
 // v1.4.24	- 02/04/24 : add option for the 
 // v1.4.23	- 16/10/23 : fix issue with responsive caption and multiple slideshows
@@ -142,13 +140,13 @@ var Slideshowck = function (container, opts, callback) {
 
 		mobileimageresolution: 0,
 
-		container			: '',
+		container: '',
 
-		responsiveCaption	: false,
+		responsiveCaption: false,
 
-		keyboardNavigation	: false,
+		keyboardNavigation: false,
 
-		titleInThumbs		: false,
+		titleInThumbs: false,
 
 		captionTime			: 0,
 
@@ -156,9 +154,9 @@ var Slideshowck = function (container, opts, callback) {
 
 		captionOutEffectTime	: 600,
 
-		alias				: 'slideshow',
+		alias	: 'slideshow',
 
-		breakpoints			: '{"800" : "80%"}',
+//		videoAutoplay: '0',
 
 ////////callbacks
 
@@ -194,7 +192,6 @@ var Slideshowck = function (container, opts, callback) {
 	}
 
 	var opts = $.extend({}, defaults, opts);
-	opts.initialHeight = opts.height; // save the value for use with breakpoints
 
 	var wrap = $(container).addClass('camera_wrap');
 
@@ -347,8 +344,6 @@ var Slideshowck = function (container, opts, callback) {
 	var w,
 		h;
 
-	opts.breakpoints = JSON.parse(opts.breakpoints);
-
 	var screenwidth = parseInt($(document.body).width());
 	// var imageprefix = '';
 	// if (opts.mobileimageresolution && screenwidth <= opts.mobileimageresolution) imageprefix = opts.mobileimageresolution + '_';
@@ -373,16 +368,9 @@ var Slideshowck = function (container, opts, callback) {
 		imgsrc = $(this).attr('data-src');
 		imgsrctmp = imgsrc.split('\/');
 		imgnametmp = imgsrctmp[imgsrctmp.length - 1];
-		if (imgresolution 
-				&& imgsrc.search('lh3.googleusercontent') === -1 // do not use resized images for Google source
-			) {
+		if (imgresolution) {
 			imgsrctmp[imgsrctmp.length - 1] = imgresolution + '/' + imgnametmp;
 			imgsrc = imgsrctmp.join('\/');
-		} else if (imgresolution 
-				&& imgsrc.search('lh3.googleusercontent') !== -1 // do not use resized images for Google source
-			) {
-			googleimgsrctmp = imgsrc.split('=');
-			imgsrc = googleimgsrctmp[0] + '=w' + imgresolution;
 		}
 		allImg.push(imgsrc);
 		allImgName.push(imgnametmp);
@@ -558,18 +546,14 @@ var Slideshowck = function (container, opts, callback) {
 	wrap.show();
 	var w = target.width();
 	var h = target.height();
-	var setPause;
 
-	setHeightOptionForBreakpoint();
+	var setPause;
 
 	$(window).bind('resize pageshow',function(){
 		if(started == true) {
 			resizeImage();
 			// addLightbox();
 		}
-
-		setHeightOptionForBreakpoint();
-
 		$('ul', thumbs).animate({'margin-top':0},0,thumbnailPos);
 		if(!elem.hasClass('paused')){
 			elem.addClass('paused');
@@ -601,24 +585,6 @@ var Slideshowck = function (container, opts, callback) {
 			},1500);
 		}
 	});
-
-	function setHeightOptionForBreakpoint() {
-		// adapt the height at the breakpoints
-		if (opts.breakpoints) {
-			var isBreakpoint = false;
-			var winW = $(window).width();
-
-			for (const breakpoint in opts.breakpoints) {
-				if (winW <= parseInt(breakpoint)) {
-					opts.height = opts.breakpoints[breakpoint];
-					isBreakpoint = true;
-				}
-			}
-			if (!isBreakpoint) {
-				opts.height = opts.initialHeight
-			}
-		}
-	}
 
 	function resizeFont() {
 		var fontRatio = wrap.width() / 700;

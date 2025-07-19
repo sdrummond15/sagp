@@ -14,13 +14,13 @@
 #banner-int1 .banner-int1 .banner1 {
     width: 100%;
     display: block;
-    height: 500px;
+    height: 300px;
     background-position: center;
     background-size: cover;
 }
 
 #banner-int1 .banner-int1 .overlay {
-    background-color: rgba(0, 0, 0, 0.4);
+    /* background-color: rgba(0, 0, 0, 0.4); */
     width: 100%;
     height: 100%;
     top: 0;
@@ -51,9 +51,6 @@
         right: 20px;
         bottom: 0;
     }
-    #banner-int1 .banner-int1 .banner1{
-        height: 470px;
-    }
 }
 
 @media screen and (max-width: 768px) {
@@ -63,7 +60,7 @@
         margin: 0 auto 5px auto;
     }
     #banner-int1 .banner-int1 .banner1{
-        height: 450px;
+        height: 250px;
     }
 }
 
@@ -72,7 +69,7 @@
         font-size: 28px;
     }
     #banner-int1 .banner-int1 .banner1{
-        height: 400px;
+        height: 250px;
     }
 }
 
@@ -81,6 +78,6 @@
         font-size: 24px;
     }
     #banner-int1 .banner-int1 .banner1{
-        height: 320px;
+        height: 250px;
     }
 }

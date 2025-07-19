@@ -35,11 +35,9 @@
 }
 
 @font-face {
-    font-family: 'Heavitas';
-    src: url('fontes/heavitas.woff2') format('woff2'),
-        url('fontes/heavitas.woff') format('woff'),
-        url('fontes/heavitas.ttf') format('truetype');
-    font-weight: normal;
+    font-family: 'Rubik';
+    src: url('fontes/Rubik-VariableFont_wght.ttf') format('truetype');
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -218,7 +216,7 @@ body {
 a {
     color: #010530;
     text-decoration: none;
-    font-family: 'Heavitas';
+    font-family: 'Rubik';
     font-weight: lighter;
 }
 
@@ -249,10 +247,10 @@ p {
 }
 
 h1 {
-    font-family: 'Heavitas';
+    font-family: 'Rubik';
     font-weight: lighter;
     color: #000;
-    font-size: 2.5rem;
+    font-size: 3rem;
     line-height: 1.2;
     margin-bottom: 20px;
 }
@@ -269,11 +267,11 @@ h1 a:hover {
 }
 
 h2 {
-    font-size: 2rem;
-    font-family: 'Heavitas';
+    font-size: 2.5rem;
+    font-family: 'Rubik';
     font-weight: lighter;
     color: #010530;
-    line-height: 1.2;
+    line-height: 1.7;
     margin-bottom: 25px;
     text-transform: uppercase;
     border-bottom: 1px solid #383838;
@@ -291,10 +289,10 @@ h2 a:hover {
 }
 
 h3 {
-    font-family: 'Heavitas';
+    font-family: 'Rubik';
     font-weight: lighter;
     color: #000;
-    font-size: 1.4rem;
+    font-size: 2rem;
     line-height: 1.2;
     margin-bottom: 20px;
 }
@@ -316,30 +314,30 @@ h3 a:hover {
     color: #fff;
     text-transform: uppercase;
     font-size: 25px;
-    line-height: 1.15em;
+    line-height: 1.5em;
     margin-bottom: 6px;
 }
 
 h4 {
-    font-family: 'Heavitas';
+    font-family: 'Rubik';
     color: #000;
-    font-size: 1.125rem;
+    font-size: 1.625rem;
     margin: 10px 0;
     font-weight: lighter;
 }
 
 h5 {
-    font-family: 'Heavitas';
+    font-family: 'Rubik';
     color: #000;
-    font-size: 1.25rem;
+    font-size: 1.375rem;
     margin: 10px 0;
     font-weight: lighter;
 }
 
 h6 {
-    font-family: 'Heavitas';
+    font-family: 'Rubik';
     color: #000;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: lighter;
 }
 
@@ -531,7 +529,7 @@ article a:hover {
     text-decoration: none;
     display: table;
     line-height: 0;
-    padding: 10px 15px;
+    padding: 0px 15px;
     border: 1px solid #14395F;
     border-top: 0;
     border-radius: 0 0 10px 10px;
@@ -589,8 +587,8 @@ article a:hover {
 
 #topmenu span,
 #topmenu a {
-    font-family: 'Heavitas';
-    font-size: 16px;
+    font-family: 'Rubik';
+    font-size: 18px;
     display: block;
     color: #FFF;
     text-decoration: none;
@@ -704,7 +702,7 @@ article a:hover {
 /** Content/Menu Wrap **/
 
 #content-menu_wrap_bg {
-    min-height: 500px;
+    /* min-height: 500px; */
     width: 100%;
     display: table;
     margin-bottom: 45px;
@@ -1894,19 +1892,21 @@ a.feed-link {
 #copyright {
     clear: both;
     width: 100%;
-    display: table;
+    display: flex;
     background-color: #35485C;
+    justify-content: center;
 }
 
 .copyrightint {
-    width: 1170px;
-    margin: auto;
+    max-width: 1170px;
+    display:flex;
+    gap: 10px;
     padding: 10px 0;
     color: #FFF;
     font-family: "Cordia-New";
     font-size: 1.2rem;
     font-weight: bold;
-    text-align: center;
+    justify-content: center;
 }
 
 a.sd {
@@ -1926,52 +1926,82 @@ a.sd {
 }
 
 #box_wrap {
+    overflow: auto;
+    margin: auto;
     width: 100%;
-    display: table;
+    max-width: 1170px;
 }
 
 #box_placeholder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: auto;
-    width: 1170px;
-    padding: 30px 0 40px 0;
-    display: table;
+    padding-top: 20px;
+    width: 100%;
+    max-width: 1170px;
+}
+
+#box_placeholder a:hover {
+    color: #fff;
+}
+
+#box_placeholder h1,
+#box_placeholder h2,
+#box_placeholder h3 {
+    color: #969696;
 }
 
 #box1 {
-    width: 20%;
+    max-width: 300px;
     margin: 0;
     padding: 0;
-    float: left;
+    display: flex;
+    justify-content: flex-end;
 }
 
 #box2 {
-    width: 90%;
     margin: 0;
     padding: 0;
-    float: left;
+    display: flex;
+    justify-content: center;
 }
 
 #box3 {
-    width: 30%;
+    max-width: 300px;
     margin: 0;
     padding: 0;
-    float: left;
-    text-align: right;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
 }
 
-#box2 img {
-    float: left;
+.custom-endereco-rodape a {
+    color: #FFF;
+    line-height: 0px;
+    font-weight: bold;
+    font-size: 1.125rem;
 }
 
-#box2 h4 {
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 20px;
+.custom-endereco-rodape p {
+    text-align: center;
 }
 
-#box2 h4 a {
-    text-decoration: none;
-    color: #6fe3f2;
+.custom-endereco-rodape a:hover {
+    color: #010530 !important;
+}
+
+.custom-contato-rodape a {
+    color: #FFF;
+    font-size: 1.125rem;
+}
+
+.custom-contato-rodape {
+    text-align: center;
+}
+
+.custom-contato-rodape a:hover {
+    color: #010530 !important;
 }
 
 /** Editor **/
@@ -2743,9 +2773,9 @@ ul.category-module-servicos li a p {
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
     gap: 1.5rem;
-
+    flex-wrap: wrap;
 }
 
 .service-box {
@@ -2804,12 +2834,12 @@ ul.category-module-servicos li a p {
 
 .service-link {
     align-self: flex-start;
-    font-size: 1.275rem;
+    font-size: 1.5rem;
     font-weight: 500;
     color: #0066cc;
     text-decoration: none;
     border: 1px solid #0066cc;
-    padding: 0.4rem 0.8rem;
+    padding: 0.5rem 0.9rem;
     border-radius: 4px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -2823,6 +2853,7 @@ ul.category-module-servicos li a p {
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
+    gap: 3.75rem;
 
 }
 
@@ -2834,6 +2865,27 @@ ul.category-module-servicos li a p {
     margin: auto 0;
 }
 
+.secao-leia-mais-home a {
+    padding: 0.5rem 0.9rem;
+}
+
+#whatsapp-button {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25D366;
+    /* verde WhatsApp */
+    color: white;
+    border-radius: 50%;
+    padding: 15px 18px;
+    font-size: 28px;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 @media screen and (max-width: 1200px) {
 
@@ -2863,7 +2915,7 @@ ul.category-module-servicos li a p {
     }
 
     h3 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     .single-article p {
@@ -2884,11 +2936,11 @@ ul.category-module-servicos li a p {
     .item-page-noticias-cases h2,
     .blog-noticias-cases h2,
     h2 {
-        font-size: 22px;
+        font-size: 32px;
     }
 
     p {
-        font-size: 18px;
+        font-size: 32px;
     }
 
     #box_placeholder {
@@ -2944,26 +2996,8 @@ ul.category-module-servicos li a p {
 
     #box_placeholder {
         width: auto;
-    }
-
-    #box1 {
-        width: auto;
-        float: left;
-        min-height: 100px;
-    }
-
-    #box2 {
-        width: auto;
-        min-width: 600px;
-        min-height: 100px;
-        padding-top: 20px;
-        float: none;
-        display: table;
-    }
-
-
-    #box2 img {
-        width: 100px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .customendereco-rodape p {
@@ -3001,12 +3035,54 @@ ul.category-module-servicos li a p {
         display: table;
     }
 
+    .service-grid {
+        grid-template-columns: repeat(1, minmax(240px, 1fr));
+    }
+
+    .service-image-wrapper {
+        padding-top: 250px;
+    }
+
+    .secao-leia-mais-home {
+        gap: 1rem;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .imagem-secao-leia-mais-home{
+        order: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .texto-secao-leia-mais-home {
+        order: 2;
+    }
+
+    .secao-leia-mais-home > p{
+        display: flex;
+        align-items: center;
+    }
+
+    .secao-leia-mais-home img{
+        width:70px;
+        height: auto;
+        margin: auto
+    }
+
     #logo a {
         padding: 8px 0;
     }
 
     .btn {
         font-size: 12px;
+    }
+
+    #box_placeholder {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 20px;
+
     }
 
     #topmenu_wrap .midias {
@@ -3018,17 +3094,10 @@ ul.category-module-servicos li a p {
         font-size: 14px;
     }
 
-    #box_placeholder {
-        width: 100%;
-    }
 
-    #box2 {
-        min-width: auto;
-        width: 100%;
-    }
-
-    #box2 img {
-        width: 80px;
+    #box1 img {
+        height: 100px;
+        float: right;
     }
 
     .customendereco-rodape p {
@@ -3038,15 +3107,20 @@ ul.category-module-servicos li a p {
     }
 
     .copyrightint {
-        font-size: 0.8rem
+        font-size: 1rem
     }
+
+    #whatsapp-button {
+		padding: 14px 17px;
+		font-size: 20px;
+	}
 
     .custom-banner-int h1 {
         font-size: 24px;
     }
 
     p {
-        font-size: 16px;
+        font-size: 28px;
     }
 
     ul li {
@@ -3055,7 +3129,7 @@ ul.category-module-servicos li a p {
 
     h3,
     h4 {
-        font-size: 15px;
+        font-size: 20px;
     }
 
     .contact-form fieldset {
@@ -3074,18 +3148,8 @@ ul.category-module-servicos li a p {
         height: 100px;
     }
 
-    #box2 {
-        width: 92%;
-        min-height: 0;
-    }
-
     .menuresp ul {
         margin-top: 18px;
-    }
-
-    #box2 img {
-        width: 50px;
-        float: right;
     }
 
     .customendereco-rodape p {
@@ -3106,9 +3170,26 @@ ul.category-module-servicos li a p {
     .menuresp ul {
         margin-top: 1px;
     }
+
+    #whatsapp-button {
+		padding: 10px 13px;
+		font-size: 20px;
+	}
+
+    p {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 26px !important;
+    }
+
+    .copyrightint {
+        font-size: 0.75rem;
+    }
 }
 
-@media screen and (max-width: 328px) {
+@media screen and (max-width: 328px) { 
 
     ul.contact-social {
         margin-right: -20px;
@@ -3214,6 +3295,6 @@ ul.category-module-servicos li a p {
 
 .menuresp ul li.active ul li.active a {
     font-weight: bold;
-    color: #565859;
+    color: #000;
 
 }

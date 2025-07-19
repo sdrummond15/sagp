@@ -4,7 +4,7 @@
 }
 
 .btn.btn-login {
-    background-color: #727272;
+    background-color: transparent;
     border: 1px solid #FFF;
     font-size: 16px;
     text-transform: uppercase;
@@ -36,6 +36,7 @@
     .btn.btn-login {
         padding: 2px;
         border: 0;
+        margin-top:0px;
     }
 
     .btn.btn-login i {

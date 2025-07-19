@@ -108,7 +108,6 @@ if (count($items) == 1) { // for only one slide, no navigation, no button
 }
 
 $autoAdvance = (count($items) > 1) ? $params->get('autoAdvance', '1') : '0';
-$breakpoints = '{"' . $params->get('breakpoint1resolution', '') . '" : "' . $params->get('breakpoint1height', '') . '"}';
 // load the slideshow script
 $js = "
 		jQuery(document).ready(function(){
@@ -143,7 +142,6 @@ $js = "
 				captionOutEffect: '" . $params->get('captionOutEffect', 'default') . "',
 				captionOutEffectTime: " . $params->get('captionOutEffectTime', '600') . ",
 				alias: '" . $params->get('alias', 'slideshow') . "',
-				breakpoints: '" . $breakpoints . "',
 				container: '" . $params->get('container', '') . "'
 		});
 }); 
