@@ -1954,6 +1954,7 @@ a.sd {
 
 #box1 {
     max-width: 300px;
+    width: 33%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -1961,6 +1962,7 @@ a.sd {
 }
 
 #box2 {
+    width: 34%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -1969,6 +1971,7 @@ a.sd {
 
 #box3 {
     max-width: 300px;
+    width: 33%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -2943,32 +2946,17 @@ ul.category-module-servicos li a p {
         font-size: 32px;
     }
 
+    #box1 {
+        justify-content: center;
+    }
+
     #box_placeholder {
-        padding: 0px 0 20px 0;
-    }
-
-    #box2 {
-        width: 100%;
-    }
-
-    #box2 img {
-        float: right;
-        width: 150px
-    }
-
-    .customendereco-rodape p {
-        font-size: 1rem;
-        margin-top: 70px;
-        margin-left: 40px;
+        justify-content: center;
     }
 
     .custom-logo>div {
         float: right;
         margin-right: 20px;
-    }
-
-    #box3 {
-        width: 100%;
     }
 
     .custom-midias {
@@ -3047,6 +3035,22 @@ ul.category-module-servicos li a p {
         gap: 1rem;
         flex-wrap: wrap;
         flex-direction: column;
+        text-align: center;
+    }
+
+    .secao-leia-mais-home a {
+        text-align: center !important;
+        float: none;
+        padding: 1rem 1.4rem;
+        font-size: 16px;
+    }
+
+    .secao-leia-mais-home p {
+        text-align: center !important;
+    }
+
+    .botao-secao-leia-mais-home {
+        margin-top: 30px;
     }
 
     .imagem-secao-leia-mais-home{
@@ -3075,14 +3079,15 @@ ul.category-module-servicos li a p {
     }
 
     .btn {
-        font-size: 12px;
+        font-size: 14px;
+        padding: 0.5rem 0.8rem;
     }
 
     #box_placeholder {
         flex-direction: column;
         gap: 20px;
         margin-top: 20px;
-
+        margin-bottom: 20px;
     }
 
     #topmenu_wrap .midias {
@@ -3094,9 +3099,21 @@ ul.category-module-servicos li a p {
         font-size: 14px;
     }
 
+    #box1 {
+        width: 100%;
+    }
+
+    #box2 {
+        width: 100%;
+    }
+
+    #box3 {
+        width: 100%;
+    }
 
     #box1 img {
-        height: 100px;
+        height: 150px;
+        width: auto;
         float: right;
     }
 
@@ -3130,6 +3147,15 @@ ul.category-module-servicos li a p {
     h3,
     h4 {
         font-size: 20px;
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
     }
 
     .contact-form fieldset {
@@ -3171,6 +3197,33 @@ ul.category-module-servicos li a p {
         margin-top: 1px;
     }
 
+    .menutop {
+        float: none;
+    }
+
+    #topmenu_wrap {
+        float: none;
+        width: 100%;
+      }
+    
+      #topmenu {
+        display: block;
+        width: 100%;
+      }
+    
+      #topmenu ul {
+        display: block;
+        width: 100%;
+      }
+    
+      #topmenu li {
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+      }
+
     #whatsapp-button {
 		padding: 10px 13px;
 		font-size: 20px;
@@ -3189,6 +3242,9 @@ ul.category-module-servicos li a p {
     }
 }
 
+@media screen and (max-width: 366px) { 
+
+}
 @media screen and (max-width: 328px) { 
 
     ul.contact-social {
@@ -3209,8 +3265,9 @@ ul.category-module-servicos li a p {
         max-width: 200px;
     }
 
-    #topmenu_wrap {
-        width: 10px;
+    .menutop {
+        display: flex;
+    flex-wrap: wrap;
     }
 
     .secao-leia-mais-home img {
