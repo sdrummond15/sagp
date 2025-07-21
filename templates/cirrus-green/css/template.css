@@ -3151,7 +3151,7 @@ ul.category-module-servicos li a p {
     }
 
     h2 {
-        text-align: center;
+        text-align: center !important;
     }
 
     p {
