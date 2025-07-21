@@ -2872,13 +2872,6 @@ ul.category-module-servicos li a p {
     padding: 0.5rem 0.9rem;
 }
 
-.botao-secao-leia-mais-home {
-    text-align: center;
-}
-
-.botao-secao-leia-mais-home a {
-    float: none;
-}
 #whatsapp-button {
     position: fixed;
     bottom: 40px;
