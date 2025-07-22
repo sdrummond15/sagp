@@ -1994,6 +1994,21 @@ a.sd {
     color: #010530 !important;
 }
 
+.custom-email-rodape a {
+    color: #FFF;
+    line-height: 0px;
+    font-weight: bold;
+    font-size: 1.125rem;
+}
+
+.custom-email-rodape p {
+    text-align: center;
+}
+
+.custom-email-rodape a:hover {
+    color: #010530 !important;
+}
+
 .custom-contato-rodape a {
     color: #FFF;
     font-size: 1.125rem;
