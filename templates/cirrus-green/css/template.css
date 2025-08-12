@@ -627,7 +627,7 @@ article a:hover {
     position: absolute;
     font-family: Arial;
     font-size: 12px;
-    width: 150px;
+    width: 200px;
     left: -999em;
     /* "display: none" not seen by screen readers */
     background-color: rgba(0, 0, 0, 0.67);
@@ -648,7 +648,7 @@ article a:hover {
     margin: 0;
     padding: 0 15px;
     width: calc(100% - 30px);
-    text-align: left;
+    text-align: center;
 }
 
 #topmenu li li a {
@@ -1304,6 +1304,7 @@ p.counter {
 
 /** Login **/
 
+
 #login-form fieldset.userdata {
     margin-bottom: 5px;
     margin-top: -15px;
@@ -1313,117 +1314,71 @@ p.counter {
     float: left;
 }
 
-.area_cliente_login {
-    cursor: pointer;
-}
-
-.form-login {
-    position: absolute;
-    z-index: 99;
-    padding: 10px;
-    background-color: #6fe3f2;
-    margin-left: -130px;
-    width: 250px;
-}
-
-.form-login label {
-    color: #FFF;
-    font-family: Arial;
-    font-size: 20px;
-}
-
-.area_cliente_logout {
-    cursor: pointer;
-}
-
-.form-logout {
-    width: 250px;
-    position: absolute;
-    z-index: 99;
-    padding: 10px;
-    background-color: #6fe3f2;
-    margin-left: -130px;
-}
-
-.login-greeting {
-    color: #FFF;
-    font-family: Arial;
-    font-size: 20px;
-}
-
-ul.unstyled {
+#login-form ul {
+    margin: 0px;
     display: table;
-    margin: 0;
     padding: 10px 0 0 0;
-    list-style: none;
     width: 100%;
+    list-style: none;
 }
 
-ul.unstyled li {
-    float: left;
-    width: 96%;
-    padding: 0 2%;
-    line-height: 2;
+#login-form ul li {
+    border: 0px;
+    font-size: 12px;
     text-align: center;
 }
 
-ul.unstyled li a {
+#login-form ul li a {
     color: #FFF;
-    font-family: Arial;
-    font-size: 10px;
-    text-decoration: none;
+    font-weight: 600;
 }
 
 #login-form input.inputbox,
 #modlgn-username,
 #modlgn-passwd {
-    width: 96%;
-    margin-left: 0px;
-    padding: 5px 2%;
+    width: calc(100% - 20px);
+    padding: 3px 10px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
     border: 0;
     outline: none;
+    background-color: #FFF;
+    box-shadow: unset;
+    height: auto;
+    font-size: 16px;
+    line-height: 1.4;
+    font-family: 'Encode Sans Condensed', Helvetica, Arial;
 }
 
 #login-form label {
     display: block;
-    margin-left: 0px;
+    margin: 0;
+    color: #FFF;
+    font-weight: 500;
+    font-size: 14px;
+    white-space: unset;
+    text-shadow: unset;
 }
 
 #form-login-remember label {
     float: none;
     width: auto;
     display: inline;
-    font-size: 14px;
 }
 
 #form-login-remember input.inputbox {
     width: auto;
     border: 0;
+    vertical-align: middle;
+    margin-left: 3px;
+    margin-top: 10px;
+    display: inline;
+    float: right;
 }
 
-.login,
-.dados-login {
+.login fieldset {
     border: 0;
-    width: 46%;
-    padding: 0 2%;
-    float: left;
-}
-
-.login label {
-    float: left;
-    margin-right: 10px;
-    font-size: 14px;
-}
-
-.login #username-lbl,
-.login #password-lbl {
-    font-size: 20px;
-}
-
-.login button[type="submit"].btn {
-    margin: auto;
-    display: table;
-    padding: 10px 50px;
 }
 
 .login-fields {
@@ -1446,46 +1401,30 @@ ul.unstyled li a {
     margin-bottom: 20px
 }
 
-.dados-login ul {
-    list-style: none;
-    padding: 0;
-}
-
-.dados-login ul li a {
-    text-decoration: none;
-    color: #666;
-}
-
-.dados-login ul li a:hover {
-    font-family: Arial;
-}
-
 .validate-username,
 .validate-password,
 .validate-email,
 #jform_name {
-    width: 96%;
-    margin: 0 0 10px 0;
-    padding: 5px 2%;
-    border: 0;
-    background-color: #e7f8f1 !important;
-    font-family: Arial;
-    font-size: 16px;
+    width: 140px;
+    margin-left: 0px;
+    padding: 6px;
+    padding-right: 24px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #e2e2e2;
+    outline: none;
 }
 
 .icon-user {
     display: none;
 }
 
-.userdata label,
 #form-login-remember {
-    margin-top: 10px;
-    float: left;
-}
-
-#form-login-submit {
-    margin-top: 10px;
-    float: right
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
 }
 
 .icon-lock.tip {
@@ -1494,6 +1433,82 @@ ul.unstyled li a {
 
 fieldset div div input {
     margin-bottom: 5px;
+}
+
+
+
+#form-login-submit {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+
+
+#login-form .login-button {
+    padding: 3px 10px;
+    background-color: #FFF;
+    color: #58595b;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+#login-form .login-button:hover {
+    -moz-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.4);
+}
+
+#login-box,
+#logout-box {
+    margin-right: 20px;
+    right: 0;
+    position: absolute;
+	overflow:visible;
+    clear: both;
+	margin-top: 6px;
+    z-index: 9999;
+}
+
+
+#login-container {
+    float: right;
+}
+#btn-login,
+#btn-logout {
+    clear: both;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 29px;
+    display: table;
+    cursor: pointer;
+    color: #FFF;
+}
+
+#btn-login i,
+#btn-logout i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+#login-form,
+#logout-form {
+    display: none;
+    background-color: #313131;
+    text-align: center;
+    padding: 10px 20px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.login-greeting,
+.pretext p {
+    color: #FFF;
+    font-size: 20px;
+    font-family: 'Rubik';
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 /** User profile **/
@@ -3020,6 +3035,9 @@ ul.category-module-servicos li a p {
         font-size: 30px;
     }
 
+    #btn-login, #btn-logout {
+        margin-top: 25px;
+    }
     #logo img {
         height: 90px;
     }
@@ -3182,6 +3200,10 @@ ul.category-module-servicos li a p {
         margin-bottom: 40px;
     }
 
+    #btn-login, #btn-logout {
+        margin-top: 21px;
+    }
+
 }
 
 @media screen and (max-width: 490px) {
@@ -3200,6 +3222,15 @@ ul.category-module-servicos li a p {
         max-width: 230px;
     }
 
+    #btn-login span,
+    #btn-logout span
+    {
+        display:none;
+    }
+
+    #contact-social {
+        margin-right: 0px;
+    }
 
     #logo img {
         width: 200px;
@@ -3263,7 +3294,7 @@ ul.category-module-servicos li a p {
 @media screen and (max-width: 328px) { 
 
     ul.contact-social {
-        margin-right: -20px;
+        margin-right: -5px;
         margin-bottom: -10px;
     }
 
