@@ -1463,11 +1463,10 @@ fieldset div div input {
 #login-box,
 #logout-box {
     margin-right: 20px;
-    right: 0;
     position: absolute;
-	overflow:visible;
+    overflow: visible;
     clear: both;
-	margin-top: 6px;
+    margin-top: 6px;
     z-index: 9999;
 }
 
@@ -1475,6 +1474,7 @@ fieldset div div input {
 #login-container {
     float: right;
 }
+
 #btn-login,
 #btn-logout {
     clear: both;
@@ -1914,7 +1914,7 @@ a.feed-link {
 
 .copyrightint {
     max-width: 1170px;
-    display:flex;
+    display: flex;
     gap: 10px;
     padding: 10px 0;
     color: #FFF;
@@ -2938,6 +2938,13 @@ ul.category-module-servicos li a p {
 
 }
 
+@media (max-width: 1600px) {
+    #login-box,
+    #logout-box {
+        right: 0;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     .cameraContent .camera_caption_title {
         font-size: 24px;
@@ -3035,9 +3042,11 @@ ul.category-module-servicos li a p {
         font-size: 30px;
     }
 
-    #btn-login, #btn-logout {
+    #btn-login,
+    #btn-logout {
         margin-top: 25px;
     }
+
     #logo img {
         height: 90px;
     }
@@ -3086,7 +3095,7 @@ ul.category-module-servicos li a p {
         margin-top: 30px;
     }
 
-    .imagem-secao-leia-mais-home{
+    .imagem-secao-leia-mais-home {
         order: 1;
         display: flex;
         justify-content: center;
@@ -3096,13 +3105,13 @@ ul.category-module-servicos li a p {
         order: 2;
     }
 
-    .secao-leia-mais-home > p{
+    .secao-leia-mais-home>p {
         display: flex;
         align-items: center;
     }
 
-    .secao-leia-mais-home img{
-        width:70px;
+    .secao-leia-mais-home img {
+        width: 70px;
         height: auto;
         margin: auto
     }
@@ -3161,9 +3170,9 @@ ul.category-module-servicos li a p {
     }
 
     #whatsapp-button {
-		padding: 14px 17px;
-		font-size: 20px;
-	}
+        padding: 14px 17px;
+        font-size: 20px;
+    }
 
     .custom-banner-int h1 {
         font-size: 24px;
@@ -3200,7 +3209,8 @@ ul.category-module-servicos li a p {
         margin-bottom: 40px;
     }
 
-    #btn-login, #btn-logout {
+    #btn-login,
+    #btn-logout {
         margin-top: 21px;
     }
 
@@ -3223,9 +3233,8 @@ ul.category-module-servicos li a p {
     }
 
     #btn-login span,
-    #btn-logout span
-    {
-        display:none;
+    #btn-logout span {
+        display: none;
     }
 
     #contact-social {
@@ -3250,30 +3259,30 @@ ul.category-module-servicos li a p {
     #topmenu_wrap {
         float: none;
         width: 100%;
-      }
-    
-      #topmenu {
+    }
+
+    #topmenu {
         display: block;
         width: 100%;
-      }
-    
-      #topmenu ul {
+    }
+
+    #topmenu ul {
         display: block;
         width: 100%;
-      }
-    
-      #topmenu li {
+    }
+
+    #topmenu li {
         float: none;
         display: block;
         width: 100%;
         text-align: center;
         margin: 5px 0;
-      }
+    }
 
     #whatsapp-button {
-		padding: 10px 13px;
-		font-size: 20px;
-	}
+        padding: 10px 13px;
+        font-size: 20px;
+    }
 
     p {
         font-size: 24px;
@@ -3288,10 +3297,9 @@ ul.category-module-servicos li a p {
     }
 }
 
-@media screen and (max-width: 366px) { 
+@media screen and (max-width: 366px) {}
 
-}
-@media screen and (max-width: 328px) { 
+@media screen and (max-width: 328px) {
 
     ul.contact-social {
         margin-right: -5px;
@@ -3313,7 +3321,7 @@ ul.category-module-servicos li a p {
 
     .menutop {
         display: flex;
-    flex-wrap: wrap;
+        flex-wrap: wrap;
     }
 
     .secao-leia-mais-home img {
