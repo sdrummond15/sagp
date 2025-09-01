@@ -1,15 +1,4 @@
 <?php
-
-/**
- * @package     ExpenseManager
- * @subpackage  Site
- * @version     1.0.0
- * @author      Pedro Inácio Rodrigues Pontes
- * @copyright   Copyright (C) 2025. Todos os direitos reservados.
- * @license     GNU General Public License version 2
- */
-
-// Proteção contra acesso direto
 defined('_JEXEC') or die('Restricted access');
 
 class ExpenseManagerModelTechnicalvisit extends JModelForm
@@ -39,57 +28,44 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
         return $form;
     }
 
-protected function loadFormData()
-{
-    $data = JFactory::getApplication()->getUserState('com_expensemanager.edit.technicalvisit.data', array());
-
-    if (empty($data))
+    protected function loadFormData()
     {
-        $data = $this->getItem();
+        $data = JFactory::getApplication()->getUserState('com_expensemanager.edit.technicalvisit.data', array());
 
-        if (empty($data->id))
+        if (empty($data))
         {
-            $default_table_html = '
-                <table style="width: 104.5px;">
-                <tbody>
-                <tr>
-                <td style="width: 10px;">Nome</td>
-                <td style="width: 10px;">Venda</td>
-                <td style="width: 10px;">Bla</td>
-                <td style="width: 10px;">Bla</td>
-                <td style="width: 10px;">Bla</td>
-                <td style="width: 10px;">Pah</td>
-                <td style="width: 10px;">Poh</td>
-                <td style="width: 10px;">Puh</td>
-                <td style="width: 56.5px;">Pih</td>
-                </tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                <tr><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 10px;"> </td><td style="width: 56.5px;"> </td></tr>
-                </tbody>
-                </table>';
+            $item = $this->getItem();
 
-            $data->personalized_description = $default_table_html;
+            if (empty($item->id)) {
+                $user = JFactory::getUser();
+                $item->consultant_id = array($user->id);
+            }
             
-            $user = JFactory::getUser();
-            $data->consultant_id = array($user->id);
+            $data = (array) $item;
         }
-    }
 
-    return $data;
-}
+        return $data;
+    }
 
     public function save($data)
     {
-        if (!empty($data['visit_date'])) {
-            $date = new JDate($data['visit_date'], JFactory::getUser()->getTimezone());
-            $data['visit_date'] = $date->toSql(true);
+        $dateFields = [
+            'analysis_start_date', 'analysis_end_date', 'contract_start_date', 
+            'contract_end_date', 'loa_date', 'ldo_date', 'ppa_date'
+        ];
+
+        foreach ($dateFields as $field) {
+            if (!empty($data[$field])) {
+                try {
+                    $date = new JDate($data[$field], JFactory::getUser()->getTimezone());
+                    $data[$field] = $date->toSql(true);
+                } catch (Exception $e) {
+                    $data[$field] = null;
+                    JFactory::getApplication()->enqueueMessage('Formato de data inválido para ' . $field, 'warning');
+                }
+            } else {
+                $data[$field] = null;
+            }
         }
 
         $table = $this->getTable();
@@ -127,30 +103,31 @@ protected function loadFormData()
     {
         $pk = (!empty($pk)) ? $pk : (int) JFactory::getApplication()->input->getInt('id');
 
-        if ($pk > 0) {
-            try {
+        if ($pk > 0)
+        {
+            try
+            {
                 $db    = $this->getDbo();
                 $query = $db->getQuery(true);
 
                 $query->select(
                     array(
-                        'tv.*', // Pega todos os campos da tabela de visitas
+                        'tv.*',
                         'c.name AS client_name',
                         'GROUP_CONCAT(u.name SEPARATOR ", ") AS consultants'
                     )
                 )
-                    ->from($db->quoteName('#__expensemanager_technical_visits', 'tv'))
-                    ->join('LEFT', $db->quoteName('#__expensemanager_clients', 'c') . ' ON c.id = tv.client_id')
-                    ->join('LEFT', $db->quoteName('#__expensemanager_technical_visit_consultants', 'tvc') . ' ON tvc.technical_visit_id = tv.id')
-                    ->join('LEFT', $db->quoteName('#__users', 'u') . ' ON u.id = tvc.consultant_id')
-                    ->where('tv.id = ' . (int) $pk)
-                    ->group('tv.id');
+                ->from($db->quoteName('#__expensemanager_technical_visits', 'tv'))
+                ->join('LEFT', $db->quoteName('#__expensemanager_clients', 'c') . ' ON c.id = tv.client_id')
+                ->join('LEFT', $db->quoteName('#__expensemanager_technical_visit_consultants', 'tvc') . ' ON tvc.technical_visit_id = tv.id')
+                ->join('LEFT', $db->quoteName('#__users', 'u') . ' ON u.id = tvc.consultant_id')
+                ->where('tv.id = ' . (int) $pk)
+                ->group('tv.id');
 
                 $db->setQuery($query);
-                $item = $db->loadObject(); // <--- A MUDANÇA MÁGICA: loadObject() retorna um objeto!
+                $item = $db->loadObject();
 
                 if ($item) {
-                    // Adiciona os IDs dos consultores para o formulário de edição, se necessário
                     $query->clear()
                         ->select($db->quoteName('consultant_id'))
                         ->from($db->quoteName('#__expensemanager_technical_visit_consultants'))
@@ -160,7 +137,9 @@ protected function loadFormData()
                 }
 
                 return $item;
-            } catch (Exception $e) {
+            }
+            catch (Exception $e)
+            {
                 $this->setError($e->getMessage());
                 return false;
             }

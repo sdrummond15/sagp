@@ -173,6 +173,32 @@
     border-color: #eee;
 }
 
+.form-separator {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+
+.fieldset-title {
+    font-size: 24px;
+    color: #005a9c;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+#jform_personalized_description_ifr {
+    height: 300px !important;
+}
+
+#jform_personalized_description {
+    height: 300px !important;
+}
+
+button[id$="_btn"] {
+    display: none !important;
+}
   
 @media (max-width: 900px) {
     .grid-table {
