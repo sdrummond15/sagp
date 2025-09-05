@@ -32,75 +32,94 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
     {
         $data = JFactory::getApplication()->getUserState('com_expensemanager.edit.technicalvisit.data', array());
 
-        if (empty($data))
-        {
+        if (empty($data)) {
             $item = $this->getItem();
 
             if (empty($item->id)) {
                 $user = JFactory::getUser();
                 $item->consultant_id = array($user->id);
+
+                $editorFieldsWithDefaults = [
+                    'budget_expense_realization_notes',
+                    'budget_revenue_collection_notes',
+                    'budget_art167a_compliance_notes',
+                    'duodecimo_art29a_calc_notes',
+                    'duodecimo_transfer_calc_notes',
+                    'indices_education_25_notes',
+                    'indices_fundeb_application_notes',
+                    'indices_art212a_chart_notes',
+                    'indices_health_spending_notes',
+                    'indices_personnel_expenses_notes',
+                    'indices_financial_availability_notes'
+                ];
+
+                foreach ($editorFieldsWithDefaults as $fieldName) {
+                    if (empty($item->$fieldName)) {
+                        $item->$fieldName = $this->_getDefaultEditorContent($fieldName);
+                    }
+                }
             }
-            
+
             $data = (array) $item;
         }
 
         return $data;
     }
 
-    public function save($data)
+   private function _getDefaultEditorContent($fieldName)
     {
-        $dateFields = [
-            'analysis_start_date', 'analysis_end_date',
-            'contract_start_date', 'contract_end_date',
-            'loa_date', 'ldo_date', 'ppa_date',
-            'budget_classification_start_date', 'budget_classification_end_date'
-        ];
+        $path = __DIR__ . '/defaults/' . $fieldName . '.php';
 
-        foreach ($dateFields as $field) {
-            if (!empty($data[$field])) {
-                try {
-                    $date = new JDate($data[$field], JFactory::getUser()->getTimezone());
-                    $data[$field] = $date->toSql(true);
-                } catch (Exception $e) {
-                    $this->setError(JText::sprintf('JLIB_DATABASE_ERROR_INVALID_DATE', $field));
-                    return false;
-                }
-            } else {
-                $data[$field] = null;
-            }
+        if (file_exists($path)) {
+            ob_start();
+            include $path;
+            return ob_get_clean();
         }
 
-        $table = $this->getTable();
+        return '';
+    }
 
+    public function save($data)
+    {
+        $db = $this->getDbo();
+
+        $table = $this->getTable();
         if (!$table->bind($data) || !$table->store()) {
             $this->setError($table->getError());
             return false;
         }
 
-        $db = $this->getDbo();
         $visitId = (int) $table->id;
         $consultantIds = isset($data['consultant_id']) ? (array) $data['consultant_id'] : array();
 
-        $query = $db->getQuery(true)
-            ->delete($db->quoteName('#__expensemanager_technical_visit_consultants'))
-            ->where($db->quoteName('technical_visit_id') . ' = ' . $visitId);
-        $db->setQuery($query)->execute();
+        $db->transactionStart();
 
-        if (!empty($consultantIds)) {
-            $query->clear()
-                ->insert($db->quoteName('#__expensemanager_technical_visit_consultants'))
-                ->columns(array($db->quoteName('technical_visit_id'), $db->quoteName('consultant_id')));
+        try {
+            $deleteQuery = $db->getQuery(true)
+                ->delete($db->quoteName('#__expensemanager_technical_visit_consultants'))
+                ->where($db->quoteName('technical_visit_id') . ' = ' . $visitId);
+            $db->setQuery($deleteQuery)->execute();
 
-            foreach ($consultantIds as $consultantId) {
-                if((int)$consultantId > 0){
-                    $query->values($visitId . ', ' . (int) $consultantId);
+            if (!empty($consultantIds)) {
+                foreach ($consultantIds as $consultantId) {
+                    if ((int)$consultantId > 0) {
+                        $insertQuery = $db->getQuery(true)
+                            ->insert($db->quoteName('#__expensemanager_technical_visit_consultants'))
+                            ->columns(array($db->quoteName('technical_visit_id'), $db->quoteName('consultant_id')))
+                            ->values($visitId . ', ' . (int)$consultantId);
+                        $db->setQuery($insertQuery)->execute();
+                    }
                 }
             }
 
-            if(!empty($query->getValues())){
-                 $db->setQuery($query)->execute();
-            }
+            $db->transactionCommit();
+        } catch (Exception $e) {
+            $db->transactionRollback();
+            $this->setError('Erro crítico no banco de dados ao salvar consultores: ' . $e->getMessage());
+            return false;
         }
+
+        $this->setState($this->context . '.id', $visitId);
 
         return true;
     }
@@ -109,17 +128,16 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
     {
         $pk = (!empty($pk)) ? $pk : (int) JFactory::getApplication()->input->getInt('id');
 
-        if ($pk > 0)
-        {
-            try
-            {
+        if ($pk > 0) {
+            try {
                 $db    = $this->getDbo();
                 $query = $db->getQuery(true);
 
-                $query->select('tv.*')
-                      ->from($db->quoteName('#__expensemanager_technical_visits', 'tv'))
-                      ->where('tv.id = ' . (int) $pk);
-                
+                $query->select('tv.*, c.name AS client_name')
+                    ->from($db->quoteName('#__expensemanager_technical_visits', 'tv'))
+                    ->join('LEFT', $db->quoteName('#__expensemanager_clients', 'c') . ' ON c.id = tv.client_id')
+                    ->where('tv.id = ' . (int) $pk);
+
                 $db->setQuery($query);
                 $item = $db->loadObject();
 
@@ -130,12 +148,22 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
                         ->where($db->quoteName('technical_visit_id') . ' = ' . (int) $pk);
                     $db->setQuery($query);
                     $item->consultant_id = $db->loadColumn();
+
+                    if (!empty($item->consultant_id)) {
+                        $query->clear()
+                            ->select($db->quoteName('name'))
+                            ->from($db->quoteName('#__users'))
+                            ->where($db->quoteName('id') . ' IN (' . implode(',', array_map('intval', $item->consultant_id)) . ')');
+                        $db->setQuery($query);
+                        $consultantNames = $db->loadColumn();
+                        $item->consultants_details = implode("\n", $consultantNames);
+                    } else {
+                        $item->consultants_details = 'Nenhum consultor associado.';
+                    }
                 }
 
                 return $item;
-            }
-            catch (Exception $e)
-            {
+            } catch (Exception $e) {
                 $this->setError($e->getMessage());
                 return false;
             }
