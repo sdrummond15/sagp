@@ -59,14 +59,12 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
                     }
                 }
             }
-
             $data = (array) $item;
         }
-
         return $data;
     }
 
-   private function _getDefaultEditorContent($fieldName)
+    private function _getDefaultEditorContent($fieldName)
     {
         $path = __DIR__ . '/defaults/' . $fieldName . '.php';
 
@@ -81,34 +79,58 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
 
     public function save($data)
     {
-        $db = $this->getDbo();
+        // Define o 'created_by' para novos itens
+        if (empty($data['id'])) {
+            $user = JFactory::getUser();
+            $data['created_by'] = $user->get('id');
+        }
 
+        $db = $this->getDbo();
         $table = $this->getTable();
-        if (!$table->bind($data) || !$table->store()) {
-            $this->setError($table->getError());
+
+        // Carrega a tabela para garantir que o item existe antes de salvar
+        if (!empty($data['id'])) {
+            if (!$table->load((int) $data['id'])) {
+                $this->setError('Falha ao carregar a visita técnica para atualização.');
+                return false;
+            }
+        }
+
+        if (!$table->bind($data)) {
+            $this->setError('Falha no bind da tabela de visitas.');
+            return false;
+        }
+
+        if (!$table->store()) {
+            $this->setError('Falha ao salvar a visita principal: ' . $table->getError());
             return false;
         }
 
         $visitId = (int) $table->id;
         $consultantIds = isset($data['consultant_id']) ? (array) $data['consultant_id'] : array();
 
-        $db->transactionStart();
-
         try {
+            $db->transactionStart();
+
             $deleteQuery = $db->getQuery(true)
                 ->delete($db->quoteName('#__expensemanager_technical_visit_consultants'))
                 ->where($db->quoteName('technical_visit_id') . ' = ' . $visitId);
             $db->setQuery($deleteQuery)->execute();
 
             if (!empty($consultantIds)) {
+                $values = array();
                 foreach ($consultantIds as $consultantId) {
                     if ((int)$consultantId > 0) {
-                        $insertQuery = $db->getQuery(true)
-                            ->insert($db->quoteName('#__expensemanager_technical_visit_consultants'))
-                            ->columns(array($db->quoteName('technical_visit_id'), $db->quoteName('consultant_id')))
-                            ->values($visitId . ', ' . (int)$consultantId);
-                        $db->setQuery($insertQuery)->execute();
+                        $values[] = $visitId . ', ' . (int)$consultantId;
                     }
+                }
+
+                if (!empty($values)) {
+                    $insertQuery = $db->getQuery(true)
+                        ->insert($db->quoteName('#__expensemanager_technical_visit_consultants'))
+                        ->columns(array($db->quoteName('technical_visit_id'), $db->quoteName('consultant_id')))
+                        ->values($values);
+                    $db->setQuery($insertQuery)->execute();
                 }
             }
 
@@ -120,6 +142,41 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
         }
 
         $this->setState($this->context . '.id', $visitId);
+        return true;
+    }
+
+    public function delete(&$pks)
+    {
+        $pks = (array) $pks;
+        JArrayHelper::toInteger($pks);
+
+        if (empty($pks)) {
+            $this->setError(JText::_('JLIB_HTML_PLEASE_MAKE_A_SELECTION_FROM_THE_LIST'));
+            return false;
+        }
+
+        $db    = $this->getDbo();
+        $query = $db->getQuery(true);
+        
+        try {
+            $db->transactionStart();
+
+            $query->delete($db->quoteName('#__expensemanager_technical_visit_consultants'))
+                  ->where($db->quoteName('technical_visit_id') . ' IN (' . implode(',', $pks) . ')');
+            $db->setQuery($query)->execute();
+            
+            $query->clear()
+                  ->delete($db->quoteName('#__expensemanager_technical_visits'))
+                  ->where($db->quoteName('id') . ' IN (' . implode(',', $pks) . ')');
+            $db->setQuery($query)->execute();
+
+            $db->transactionCommit();
+
+        } catch (Exception $e) {
+            $db->transactionRollback();
+            $this->setError($e->getMessage());
+            return false;
+        }
 
         return true;
     }
@@ -151,24 +208,38 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
 
                     if (!empty($item->consultant_id)) {
                         $query->clear()
-                            ->select($db->quoteName('name'))
-                            ->from($db->quoteName('#__users'))
-                            ->where($db->quoteName('id') . ' IN (' . implode(',', array_map('intval', $item->consultant_id)) . ')');
+                            ->select(
+                                $db->quoteName('u.name') . ', ' .
+                                    $db->quoteName('p.profile_value', 'crc')
+                            )
+                            ->from($db->quoteName('#__users', 'u'))
+                            ->join(
+                                'LEFT',
+                                $db->quoteName('#__user_profiles', 'p') . ' ON ' . $db->quoteName('u.id') . ' = ' . $db->quoteName('p.user_id')
+                            )
+                            ->where($db->quoteName('p.profile_key') . ' = ' . $db->quote('profile.aboutme'))
+                            ->where($db->quoteName('u.id') . ' IN (' . implode(',', array_map('intval', $item->consultant_id)) . ')');
+
                         $db->setQuery($query);
-                        $consultantNames = $db->loadColumn();
-                        $item->consultants_details = implode("\n", $consultantNames);
+                        $userDetails = $db->loadObjectList();
+
+                        $details = [];
+                        if ($userDetails) {
+                            foreach ($userDetails as $user) {
+                                $details[] = $user->name . ' - CRC: ' . trim($user->crc, '"');
+                            }
+                        }
+                        $item->consultants_details = implode("\n", $details);
                     } else {
                         $item->consultants_details = 'Nenhum consultor associado.';
                     }
                 }
-
                 return $item;
             } catch (Exception $e) {
                 $this->setError($e->getMessage());
                 return false;
             }
         }
-
         return new stdClass();
     }
 }

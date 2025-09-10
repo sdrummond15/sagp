@@ -131,11 +131,51 @@ class ExpenseManagerViewTechnicalvisit extends JViewLegacy
 
         $education_until_date_formatted = JHtml::_('date', $item->indices_education_until_month_year, 'F \d\e Y');
 
+        $activityPhrases = [];
 
+        $activitiesMap = [
+            'budget_expense_realization_enabled'    => 'análise da realização da despesa',
+            'budget_revenue_collection_enabled'     => 'análise da arrecadação e previsão de receita',
+            'budget_art167a_compliance_enabled'     => 'verificação do cumprimento do Artigo 167-A da CF/88',
+
+            'budget_classification_transfers_enabled' => 'análise por amostragem da classificação das transferências orçamentárias',
+            'budget_classification_fundeb_enabled'  => 'análise da classificação das receitas do FUNDEB',
+
+            'duodecimo_art29a_calc_enabled'         => 'análise do Art. 29-A para o Legislativo',
+            'duodecimo_transfer_calc_enabled'       => 'análise do repasse de duodécimo',
+
+            'indices_education_25_enabled'          => 'análise da aplicação mínima de 25% na manutenção do ensino',
+            'indices_fundeb_application_enabled'    => 'análise da aplicação dos recursos do FUNDEB',
+            'indices_art212a_chart_enabled'         => 'análise do quadro complementar com indicadores (Art. 212-A)',
+            'indices_health_spending_enabled'       => 'análise da aplicação mínima de 15% nas ações e serviços de saúde',
+            'indices_personnel_expenses_enabled'    => 'consultoria em Departamento de Pessoal/RH',
+            'indices_surplus_usage_enabled'         => 'análise da utilização de superávit e excesso de arrecadação',
+            'indices_certificate_regularity_enabled' => 'verificação da regularidade das certidões municipais',
+            'indices_financial_availability_enabled' => 'análise das disponibilidades financeiras e restos a pagar',
+
+        ];
+
+        foreach ($activitiesMap as $field => $phrase) {
+            if (is_string($field)) {
+                if (!empty($item->$field)) {
+                    $activityPhrases[] = $phrase;
+                }
+            } else {
+                $activityPhrases[] = $phrase;
+            }
+        }
+
+        $this->developedActivities = '';
+        if (!empty($activityPhrases)) {
+            $paragraph = implode(', ', $activityPhrases);
+            $this->developedActivities = ucfirst($paragraph) . ', dentre outras.';
+        } else {
+            $this->developedActivities = 'As atividades desenvolvidas estão detalhadas nas seções a seguir do presente relatório.';
+        }
 
         ob_start();
 
-        include(JPATH_COMPONENT_SITE . '/views/technicalvisit/tmpl/pdf_layout.php');
+        include JPATH_COMPONENT_SITE . '/views/technicalvisit/tmpl/pdf_layout.php';
 
         $html = ob_get_contents();
         ob_end_clean();
@@ -144,7 +184,7 @@ class ExpenseManagerViewTechnicalvisit extends JViewLegacy
             $options = new Options();
             $options->set('isRemoteEnabled', true);
             $options->set('defaultFont', 'Helvetica');
-            $options->set('chroot', JPATH_SITE); 
+            $options->set('chroot', JPATH_SITE);
 
             $dompdf = new Dompdf($options);
             $dompdf->loadHtml($html, 'UTF-8');
@@ -160,7 +200,5 @@ class ExpenseManagerViewTechnicalvisit extends JViewLegacy
         JFactory::getApplication()->close();
     }
 
-    public function prepareItems (){
-        
-    }
+    public function prepareItems() {}
 }

@@ -45,23 +45,31 @@ defined('_JEXEC') or die('Restricted access');
         </div>
         <div class="info-block">
             <div class="label">ATIVIDADES DESENVOLVIDAS:</div>
-            <div class="editor-content"><?php echo $item->summary; ?></div>
+            <div><?php echo $item->summary; ?></div>
         </div>
 
         <div class="page-break"></div>
-        <h2>CONSIDERAÇÕES</h2>
+        <div class="editor-title">
+            <h2>CONSIDERAÇÕES</h2>
+        </div>
         <div class="editor-content">
             <p>
                 Em cumprimento as determinações contratuais, especialmente as contidas no contrato <?php echo htmlspecialchars($contract, ENT_QUOTES, 'UTF-8'); ?>,
                 processo administrativo <?php echo htmlspecialchars($bidding_process, ENT_QUOTES, 'UTF-8'); ?>,
                 foi realizada visita técnica junto a <?php echo htmlspecialchars($client_name, ENT_QUOTES, 'UTF-8'); ?>,
                 no período de <?php echo htmlspecialchars($visit_period_start, ENT_QUOTES, 'UTF-8'); ?> a <?php echo htmlspecialchars($visit_period_end, ENT_QUOTES, 'UTF-8'); ?>, sendo realizadas as seguintes atividades e análises:
+
+            </p>
+            <p>
+                <?php echo $this->developedActivities; ?>
             </p>
         </div>
 
         <?php if ($item->section_budget_management_enabled) : ?>
             <div class="page-break"></div>
-            <h2>Gestão Orçamentária</h2>
+            <div class="editor-title">
+                <h2>Gestão Orçamentária</h2>
+            </div>
 
             <div class="editor-content">
                 <p>
@@ -105,7 +113,9 @@ defined('_JEXEC') or die('Restricted access');
 
         <?php if ($item->section_budget_classification_enabled) : ?>
             <div class="page-break"></div>
-            <h2>Classificação Orçamentária</h2>
+            <div class="editor-title">
+                <h2>Classificação Orçamentária</h2>
+            </div>
 
             <div class="editor-content">
                 <?php if ($item->budget_classification_transfers_enabled) : ?>
@@ -126,7 +136,9 @@ defined('_JEXEC') or die('Restricted access');
 
         <?php if ($item->section_duodecimo_calculation_enabled) : ?>
             <div class="page-break"></div>
-            <h2>Apuração do Duodécimo</h2>
+            <div class="editor-title">
+                <h2>Apuração do Duodécimo</h2>
+            </div>
 
             <?php if ($item->duodecimo_art29a_calc_enabled) : ?>
                 <h3>Apuração Art. 29-A</h3>
@@ -151,7 +163,9 @@ defined('_JEXEC') or die('Restricted access');
 
         <?php if ($item->section_constitutional_indices_enabled) : ?>
             <div class="page-break"></div>
-            <h2>Da Apuração dos Índices Constitucionais</h2>
+            <div class="editor-title">
+                <h2>Da Apuração dos Índices Constitucionais</h2>
+            </div>
 
             <?php if ($item->indices_education_25_enabled) : ?>
                 <h3>Aplicação na Manutenção do Ensino 25%</h3>

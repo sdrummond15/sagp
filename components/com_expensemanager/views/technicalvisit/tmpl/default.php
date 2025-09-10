@@ -1,14 +1,13 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
-// Adiciona uma referência à variável item para facilitar a leitura
 $item = $this->item;
 ?>
 
 <div class="technical-visit">
     <h1 class="com_sagp-title"><?php echo JText::_('COM_EXPENSEMANAGER_TECHNICALVISIT_FORM_TITLE'); ?></h1>
 
-    <form action="<?php echo JRoute::_('index.php?option=com_expensemanager&task=technicalvisit.save'); ?>" method="post" name="adminForm" id="technicalvisit-form" class="form-validate">
-
+    <form action="<?php echo JRoute::_('index.php?option=com_expensemanager&task=technicalvisit.save');?>" method="post" name="adminForm" id="technicalvisit-form" class="form-validate">
+    
         <!-- Bloco Principal -->
         <div class="form-columns">
             <div class="form-column">
@@ -243,6 +242,10 @@ $item = $this->item;
                 <div class="form-group">
                     <?php echo $this->form->getLabel('contract_start_date'); ?>
                     <?php echo $this->form->getInput('contract_start_date'); ?>
+                </div>
+                <div class="form-group">
+                    <?php echo $this->form->getLabel('bidding_process_year'); ?>
+                    <?php echo $this->form->getInput('bidding_process_year'); ?>
                 </div>
             </div>
             <div class="form-column">

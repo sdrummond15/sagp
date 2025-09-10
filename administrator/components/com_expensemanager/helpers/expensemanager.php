@@ -111,11 +111,11 @@ class ExpenseManagerHelper
             $vName == 'cities'
         );
 
-        JHtmlSidebar::addEntry(
-            JText::_('COM_EXPENSEMANAGER_SUBMENU_CONSULTANTS'),
-            'index.php?option=com_expensemanager&view=consultants',
-            $vName == 'consultants'
-        );
+        // JHtmlSidebar::addEntry(
+        //     JText::_('COM_EXPENSEMANAGER_SUBMENU_CONSULTANTS'),
+        //     'index.php?option=com_expensemanager&view=consultants',
+        //     $vName == 'consultants'
+        // );
         
         JHtmlSidebar::addEntry(
             JText::_('COM_EXPENSEMANAGER_SUBMENU_CLIENTS'),
@@ -129,10 +129,10 @@ class ExpenseManagerHelper
             $vName == 'categories'
         );
 
-        JHtmlSidebar::addEntry(
-            JText::_('COM_EXPENSEMANAGER_SUBMENU_EXPENSES'),
-            'index.php?option=com_expensemanager&view=expenses',
-            $vName == 'expenses'
-        );
+        // JHtmlSidebar::addEntry(
+        //     JText::_('COM_EXPENSEMANAGER_SUBMENU_EXPENSES'),
+        //     'index.php?option=com_expensemanager&view=expenses',
+        //     $vName == 'expenses'
+        // );
     }
 }

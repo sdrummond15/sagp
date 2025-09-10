@@ -23,6 +23,7 @@ JHtml::_('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.
                     <?php
                     // Cria os links para Editar e para o PDF
                     $linkEdit = JRoute::_('index.php?option=com_expensemanager&view=technicalvisit&id=' . (int) $item->id);
+                    $linkDelete = JRoute::_('index.php?option=com_expensemanager&task=technicalvisits.delete&id=' . (int) $item->id . '&' . JSession::getFormToken() . '=1');
                     $pdfUrlIndividual = JRoute::_('index.php?option=com_expensemanager&view=technicalvisit&id=' . (int) $item->id . '&format=pdf');
                     ?>
                     <div class="grid-table row">
@@ -35,13 +36,13 @@ JHtml::_('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.
                                 Editar
                             </a>
 
-                            <?php // --- BOTÃO DE DOWNLOAD ADICIONADO AQUI --- 
-                            ?>
                             <a href="<?php echo $pdfUrlIndividual; ?>" class="com_sagp-button" target="_blank" title="Baixar PDF">
                                 <i class="fa fa-download"></i>
                             </a>
-                            <?php // --- FIM DA ADIÇÃO --- 
-                            ?>
+
+                            <a href="<?php echo $linkDelete; ?>" class="com_sagp-button com_sagp-button-danger" onclick="return confirm('<?php echo JText::_('COM_EXPENSEMANAGER_CONFIRM_DELETE'); ?>');" title="Deletar">
+                                <i class="fa fa-trash"></i>
+                            </a>
 
                         </div>
                     </div>
