@@ -8,6 +8,21 @@ JHtml::_('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.
     <h1 class="com_sagp-title"><?php echo JText::_('COM_EXPENSEMANAGER_TECHNICALVISIT_LIST_TITLE'); ?></h1>
 
     <form action="<?php echo JRoute::_('index.php?option=com_expensemanager&view=technicalvisits'); ?>" method="post" name="adminForm" id="adminForm">
+
+        <div class="js-stools-container-bar com_sagp-filters">
+            <div class="filter-search">
+                <label for="filter_search" class="element-invisible">Buscar</label>
+                <input type="text" name="filter_search" id="filter_search"
+                    value="<?php echo $this->escape($this->state->get('filter.search')); ?>"
+                    placeholder="Buscar por nome do cliente..."
+                    </div>
+                <div class="filter-submit">
+                    <button type="submit" class="com_sagp-button">Filtrar</button>
+                    <button type="button" class="com_sagp-button" onclick="document.getElementById('filter_search').value='';this.form.submit()">Limpar</button>
+                </div>
+            </div>
+        </div>
+
         <div class="list">
             <div class="grid-table header">
                 <div>ID</div>
@@ -68,3 +83,15 @@ JHtml::_('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.
         </div>
     </form>
 </div>
+
+<script>
+    Joomla.toDom(function() {
+        var searchInput = document.getElementById('filter_search');
+
+        searchInput.addEventListener('keyup', function() {
+            var searchTerm = searchInput.value;
+
+            console.log('Digitou', searchTerm);
+        })
+    })
+</script>

@@ -1,11 +1,12 @@
 <?php
+
 /**
- * @package     ExpenseManager
- * @subpackage  Site
- * @version     1.0.0
- * @author      Pedro Inácio Rodrigues Pontes
- * @copyright   Copyright (C) 2025. Todos os direitos reservados.
- * @license     GNU General Public License version 2
+ * @package    ExpenseManager
+ * @subpackage Site
+ * @version    1.0.0
+ * @author     Pedro Inácio Rodrigues Pontes
+ * @copyright  Copyright (C) 2025. Todos os direitos reservados.
+ * @license    GNU General Public License version 2
  */
 
 defined('_JEXEC') or die('Restricted access');
@@ -18,6 +19,7 @@ class ExpensemanagerModelTechnicalvisits extends JModelList
     protected function getListQuery()
     {
         $db = $this->getDbo();
+        $search = $this->getState('filter.search');
 
         $query = $db->getQuery(true);
 
@@ -43,9 +45,17 @@ class ExpensemanagerModelTechnicalvisits extends JModelList
 
         $query->where($db->quoteName('tv.created_by') . ' = ' . $userId);
 
+        if (!empty($search))
+        {
+            $searchTerm = $db->Quote('%' . $db->escape($search, true) . '%');
+
+            $query->where($db->quoteName('c.name') . ' LIKE ' . $searchTerm);
+        }
+
         $query->group($db->quoteName('tv.id'));
 
         $query->order($db->quoteName('tv.analysis_start_date') . ' DESC');
+
 
         return $query;
     }
@@ -61,5 +71,8 @@ class ExpensemanagerModelTechnicalvisits extends JModelList
 
         $limitstart = $app->input->getInt('start', 0);
         $this->setState('list.start', $limitstart);
+
+        $search = $app->input->getString('filter_search');
+        $this->setState('filter.search', $search);
     }
 }

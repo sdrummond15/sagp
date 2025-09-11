@@ -1,5 +1,6 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
+use Joomla\Utilities\ArrayHelper;
 
 class ExpenseManagerModelTechnicalvisit extends JModelForm
 {
@@ -148,7 +149,7 @@ class ExpenseManagerModelTechnicalvisit extends JModelForm
     public function delete(&$pks)
     {
         $pks = (array) $pks;
-        JArrayHelper::toInteger($pks);
+        $pks = ArrayHelper::toInteger($pks);
 
         if (empty($pks)) {
             $this->setError(JText::_('JLIB_HTML_PLEASE_MAKE_A_SELECTION_FROM_THE_LIST'));
