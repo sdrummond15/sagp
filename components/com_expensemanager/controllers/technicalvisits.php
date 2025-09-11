@@ -18,9 +18,9 @@ class ExpenseManagerControllerTechnicalvisits extends JControllerLegacy
     {
         JSession::checkToken('get') or die(JText::_('JINVALID_TOKEN'));
 
-        $app   = JFactory::getApplication();
+        $app = JFactory::getApplication();
         
-        $id = $app->input->getInt('id', 0);
+        $id = $app->input->getInt('visit_id', 0);
 
         if (!$id)
         {
@@ -33,11 +33,7 @@ class ExpenseManagerControllerTechnicalvisits extends JControllerLegacy
 
         $cid = array($id);
 
-        if ($model->delete($cid))
-        {
-            $app->enqueueMessage(JText::_('COM_EXPENSEMANAGER_TECHNICALVISIT_DELETE_SUCCESS'));
-        }
-        else
+        if (!$model->delete($cid))
         {
             $app->enqueueMessage($model->getError(), 'error');
         }
@@ -45,4 +41,3 @@ class ExpenseManagerControllerTechnicalvisits extends JControllerLegacy
         $this->setRedirect(JRoute::_('index.php?option=com_expensemanager&view=technicalvisits', false));
     }
 }
-

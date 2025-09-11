@@ -9,7 +9,6 @@ JHtml::_('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.
 
     <form action="<?php echo JRoute::_('index.php?option=com_expensemanager&view=technicalvisits'); ?>" method="post" name="adminForm" id="adminForm">
         <div class="list">
-
             <div class="grid-table header">
                 <div>ID</div>
                 <div>Data da Análise</div>
@@ -23,7 +22,7 @@ JHtml::_('stylesheet', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.
                     <?php
                     // Cria os links para Editar e para o PDF
                     $linkEdit = JRoute::_('index.php?option=com_expensemanager&view=technicalvisit&id=' . (int) $item->id);
-                    $linkDelete = JRoute::_('index.php?option=com_expensemanager&task=technicalvisits.delete&id=' . (int) $item->id . '&' . JSession::getFormToken() . '=1');
+                    $linkDelete = JRoute::_('index.php?option=com_expensemanager&task=technicalvisits.delete&visit_id=' . (int) $item->id . '&' . JSession::getFormToken() . '=1');
                     $pdfUrlIndividual = JRoute::_('index.php?option=com_expensemanager&view=technicalvisit&id=' . (int) $item->id . '&format=pdf');
                     ?>
                     <div class="grid-table row">

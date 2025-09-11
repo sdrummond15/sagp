@@ -1232,7 +1232,19 @@ li.next {
     padding-right: 16px;
     margin-left: 0px;
     margin-right: 20px;
-    color: #6fe3f2;
+    color: #232323;
+}
+
+#adminForm div.pagination ul li span {
+    color: #BBBBBB;
+}
+
+
+#adminForm .pagination li.pagination-start .pagenav,
+#adminForm .pagination li.pagination-next .pagenav,
+#adminForm .pagination li.pagination-end .pagenav,
+#adminForm .pagination li.pagination-prev .pagenav{
+    color: #232323;
 }
 
 .pagination li.pagination-start,
