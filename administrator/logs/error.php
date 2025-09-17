@@ -6,3 +6,4 @@
 #Fields: datetime	priority clientip	category	message
 2025-09-01T16:27:56+00:00	INFO ::1	joomlafailure	Nome de usuário e senha incorretos ou você ainda não possui uma conta.
 2025-09-01T16:47:52+00:00	INFO ::1	joomlafailure	Nome de usuário e senha incorretos ou você ainda não possui uma conta.
+2025-09-17T20:53:43+00:00	INFO ::1	joomlafailure	Nome de usuário e senha incorretos ou você ainda não possui uma conta.
