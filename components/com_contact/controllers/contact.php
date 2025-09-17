@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Joomla.Site
  * @subpackage  com_contact
@@ -61,32 +62,26 @@ class ContactControllerContact extends JControllerForm
 		$stateParams = clone $model->getState()->get('params');
 
 		// If the current view is the active item and a contact view for this contact, then the menu item params take priority
-		if ($active && strpos($active->link, 'view=contact') && strpos($active->link, '&id=' . (int) $contact->id))
-		{
+		if ($active && strpos($active->link, 'view=contact') && strpos($active->link, '&id=' . (int) $contact->id)) {
 			// $item->params are the contact params, $temp are the menu item params
 			// Merge so that the menu item params take priority
 			$contact->params->merge($stateParams);
-		}
-		else
-		{
+		} else {
 			// Current view is not a single contact, so the contact params take priority here
 			$stateParams->merge($contact->params);
 			$contact->params = $stateParams;
 		}
 
 		// Check if the contact form is enabled
-		if (!$contact->params->get('show_email_form'))
-		{
+		if (!$contact->params->get('show_email_form')) {
 			$this->setRedirect(JRoute::_('index.php?option=com_contact&view=contact&id=' . $stub . '&catid=' . $contact->catid, false));
 
 			return false;
 		}
 
 		// Check for a valid session cookie
-		if ($contact->params->get('validate_session', 0))
-		{
-			if (JFactory::getSession()->getState() !== 'active')
-			{
+		if ($contact->params->get('validate_session', 0)) {
+			if (JFactory::getSession()->getState() !== 'active') {
 				JError::raiseWarning(403, JText::_('JLIB_ENVIRONMENT_SESSION_INVALID'));
 
 				// Save the data in the session.
@@ -106,32 +101,31 @@ class ContactControllerContact extends JControllerForm
 		// Validate the posted data.
 		$form = $model->getForm();
 
-		if (!$form)
-		{
+		if (!$form) {
 			JError::raiseError(500, $model->getError());
 
 			return false;
 		}
 
-// Substituir ou complementar a validação do captcha
-if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response'])) {
-    // Força o Joomla a aceitar o token do invisible
-    $form->setFieldAttribute('captcha', 'required', false); // desativa validação padrão
-}
+		// Substituir ou complementar a validação do captcha
+		if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response'])) {
+			// Força o Joomla a aceitar o token do invisible
+			$form->setFieldAttribute('captcha', 'required', false); // desativa validação padrão
+		}
 
 
-		if (!$model->validate($form, $data))
-		{
+		if (!$model->validate($form, $data)) {
 			$errors = $model->getErrors();
 
-			foreach ($errors as $error)
-			{
+			foreach ($errors as $error) {
 				$errorMessage = $error;
 
-				if ($error instanceof Exception)
-				{
+				if ($error instanceof Exception) {
 					$errorMessage = $error->getMessage();
 				}
+
+				// LOG para depuração
+				error_log('DEBUG CONTACT FORM ERROR: ' . $errorMessage);
 
 				$app->enqueueMessage($errorMessage, 'error');
 			}
@@ -143,13 +137,12 @@ if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response']
 			return false;
 		}
 
+
 		// Validation succeeded, continue with custom handlers
 		$results = $dispatcher->trigger('onValidateContact', array(&$contact, &$data));
 
-		foreach ($results as $result)
-		{
-			if ($result instanceof Exception)
-			{
+		foreach ($results as $result) {
+			if ($result instanceof Exception) {
 				return false;
 			}
 		}
@@ -160,18 +153,14 @@ if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response']
 		// Send the email
 		$sent = false;
 
-		if (!$contact->params->get('custom_reply'))
-		{
+		if (!$contact->params->get('custom_reply')) {
 			$sent = $this->_sendEmail($data, $contact, $contact->params->get('show_email_copy', 0));
 		}
 
 		// Set the success message if it was a success
-		if (!($sent instanceof Exception))
-		{
+		if (!($sent instanceof Exception)) {
 			$msg = JText::_('COM_CONTACT_EMAIL_THANKS');
-		}
-		else
-		{
+		} else {
 			$msg = '';
 		}
 
@@ -179,12 +168,9 @@ if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response']
 		$app->setUserState('com_contact.contact.data', null);
 
 		// Redirect if it is set in the parameters, otherwise redirect back to where we came from
-		if ($contact->params->get('redirect'))
-		{
+		if ($contact->params->get('redirect')) {
 			$this->setRedirect($contact->params->get('redirect'), $msg);
-		}
-		else
-		{
+		} else {
 			$this->setRedirect(JRoute::_('index.php?option=com_contact&view=contact&id=' . $stub . '&catid=' . $contact->catid, false), $msg);
 		}
 
@@ -206,8 +192,7 @@ if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response']
 	{
 		$app = JFactory::getApplication();
 
-		if ($contact->email_to == '' && $contact->user_id != 0)
-		{
+		if ($contact->email_to == '' && $contact->user_id != 0) {
 			$contact_user      = JUser::getInstance($contact->user_id);
 			$contact->email_to = $contact_user->get('email');
 		}
@@ -226,8 +211,7 @@ if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response']
 		$body   = $prefix . "\n" . $name . ' <' . $email . '>' . "\r\n\r\n" . stripslashes($body);
 
 		// Load the custom fields
-		if (!empty($data['com_fields']) && $fields = FieldsHelper::getFields('com_contact.mail', $contact, true, $data['com_fields']))
-		{
+		if (!empty($data['com_fields']) && $fields = FieldsHelper::getFields('com_contact.mail', $contact, true, $data['com_fields'])) {
 			$output = FieldsHelper::render(
 				'com_contact.mail',
 				'fields.render',
@@ -238,8 +222,7 @@ if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response']
 				)
 			);
 
-			if ($output)
-			{
+			if ($output) {
 				$body .= "\r\n\r\n" . $output;
 			}
 		}
@@ -255,8 +238,7 @@ if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response']
 		// If we are supposed to copy the sender, do so.
 
 		// Check whether email copy function activated
-		if ($emailCopyToSender == true && !empty($data['contact_email_copy']))
-		{
+		if ($emailCopyToSender == true && !empty($data['contact_email_copy'])) {
 			$copytext    = JText::sprintf('COM_CONTACT_COPYTEXT_OF', $contact->name, $sitename);
 			$copytext    .= "\r\n\r\n" . $body;
 			$copysubject = JText::sprintf('COM_CONTACT_COPYSUBJECT_OF', $subject);
