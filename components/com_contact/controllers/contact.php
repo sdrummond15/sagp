@@ -113,6 +113,13 @@ class ContactControllerContact extends JControllerForm
 			return false;
 		}
 
+// Substituir ou complementar a validação do captcha
+if (isset($data['g-recaptcha-response']) && !empty($data['g-recaptcha-response'])) {
+    // Força o Joomla a aceitar o token do invisible
+    $form->setFieldAttribute('captcha', 'required', false); // desativa validação padrão
+}
+
+
 		if (!$model->validate($form, $data))
 		{
 			$errors = $model->getErrors();
