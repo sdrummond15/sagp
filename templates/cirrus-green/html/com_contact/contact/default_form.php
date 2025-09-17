@@ -18,12 +18,35 @@ if (isset($this->error)) : ?>
 <?php endif; ?>
 
 <script src="../templates/cirrus-green/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+/* Máscaras TELEFONE */
+function mascara(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout("execmascara()",1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function mtel(v){
+    v=v.replace(/\D/g,""); //Remove tudo o que não é dígito
+    v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+    v=v.replace(/(\d)(\d{4})$/,"$1-$2"); //Coloca hífen entre o quarto e o quinto dígitos
+    return v;
+}
+function id( el ){
+    return document.getElementById( el );
+}
+/*TELEFONE 1*/
+window.onload = function(){
+    id('jform_phone').onkeyup = function(){
+        mascara( this, mtel );
+    }
+}
+</script>
 
 <div class="contact-form">
 	<form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-validate form-horizontal">
-	<?php if ($fieldset->name === 'captcha' && !$this->captchaEnabled) : ?>
-				<?php continue; ?>
-			<?php endif; ?>
                 <fieldset>
 			<div class="control-group">
 				<div class="controls"><?php echo $this->form->getInput('contact_name'); ?></div>
