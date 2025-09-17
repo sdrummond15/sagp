@@ -71,7 +71,7 @@
 		/>
 	</fieldset>
 
-	<fieldset name="captcha">
+	<!-- <fieldset name="captcha">
 		<field
 			name="captcha"
 			type="captcha"
@@ -79,6 +79,6 @@
 			description="COM_CONTACT_CAPTCHA_DESC"
 			validate="captcha"
 			namespace="contact"
-		/>
+		/> -->
 	</fieldset>
 </form>
