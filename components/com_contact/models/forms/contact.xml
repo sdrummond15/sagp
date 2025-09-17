@@ -79,6 +79,6 @@
 			description="COM_CONTACT_CAPTCHA_DESC"
 			validate="captcha"
 			namespace="contact"
-		/> -->
-	</fieldset>
+		/>
+	</fieldset> -->
 </form>
