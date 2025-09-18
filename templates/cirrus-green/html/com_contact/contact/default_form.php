@@ -17,7 +17,7 @@ if (isset($this->error)) : ?>
 	</div>
 <?php endif; ?>
 
-<script src="../templates/cirrus-green/js/jquery-1.10.2.min.js"></script>
+<!-- <script src="../templates/cirrus-green/js/jquery-1.10.2.min.js"></script> -->
 
 <div class="contact-form">
 	<form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-validate form-horizontal">
